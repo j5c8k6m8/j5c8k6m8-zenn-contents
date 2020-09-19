@@ -29,7 +29,7 @@ $ docker run --name zenn --rm -v $PWD:/app/zenn-contents -w /app/zenn-contents -
 docker run --name zenn --rm -d -v $PWD:/app/zenn-contents -w /app/zenn-contents -p 80:8000 zenn-contents
 # Linuxで開発ユーザとコンテナのユーザを合わせる場合
 # docker run --name zenn --rm -d -v $PWD:/app/zenn-contents -w /app/zenn-contents -p 80:8000 -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u $(id -u $USER):$(id -g $USER) zenn-contents
-
+```
 
 ## コマンド実行
 
@@ -38,5 +38,3 @@ docker exec -it zenn ash
 # Linuxで開発ユーザとコンテナのユーザを合わせる場合
 # docker exec -it -u $(id -u $USER):$(id -g $USER) zenn ash 
 ``` 
-
-
