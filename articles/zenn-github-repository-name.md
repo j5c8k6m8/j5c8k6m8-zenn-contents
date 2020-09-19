@@ -23,7 +23,7 @@ Zenn.devの魅力は数多あると思いますが、私は特に
 
 なお、本記事の結論は、以下となります。
 
-** 「zenn-contents」が多いけど、「ユーザ名-zenn-contents」がいいのではないか**
+**「zenn-contents」が多いけど、「ユーザ名-zenn-contents」がいいのではないか**
 
 # 他の人のを見てみよう
 
