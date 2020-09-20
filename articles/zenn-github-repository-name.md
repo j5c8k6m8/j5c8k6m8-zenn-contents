@@ -1,5 +1,5 @@
 ---
-title: "ZENNと連携するGitHubリポジトリ名は何がいいのか？"
+title: "Zennと連携するGitHubリポジトリ名は何がいいのか？"
 emoji: "🤔"
 type: "idea" # tech: 技術記事 / idea: アイデア
 topics: ["zenn"]
@@ -52,7 +52,7 @@ GitHub連携は公開リポジトリではなく、プライベートリポジ�
 
 という結果を確認しました。
 
-zenn-docsはZenn公式の記事のリポジトリ名です。
+zenn-docsはZenn公式の記事のリポジトリ名としても使われています。
 
 なお、 **`zenn-contents`は [GitHubリポジトリでZennのコンテンツを管理する](https://zenn.dev/zenn/articles/connect-to-github) 記事**
 の説明画像中で使われていました。
