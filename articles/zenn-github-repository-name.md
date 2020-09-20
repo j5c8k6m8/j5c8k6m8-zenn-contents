@@ -44,15 +44,58 @@ GitHub連携は公開リポジトリではなく、プライベートリポジ�
 
 と、判断すると、9/19段階での体感では、それぞれ1/3ずつ位なのかなぁと思いました。
 
-公開リポジトリのうち7ユーザを確認し、
 
-  - zenn-contents (4名)
-  - zenn (2名)
-  - zenn-docs (1名 ※Zenn公式除く)
+さて、本記事公開時は、トレンド -> ユーザページ -> GitHub -> Repositories
+で確認していましたが、 **Zenn CLIでは、 `npx zenn init` でREADME.mdを作成する**
+ことを考慮すると、GitHubの検索で対象が絞れるのではないかと考えました。
 
-という結果を確認しました。
+そこで、npx zenn initで作られるREADME内の、zenn-cli-guideのURLを用いて、
+以下の検索テキストでGitHubを検索してみました。
 
-zenn-docsはZenn公式の記事のリポジトリ名としても使われています。
+`https://zenn.dev/zenn/articles/zenn-cli-guide in:readme`
+
+![](https://github.com/j5c8k6m8/j5c8k6m8-zenn-contents/raw/master/articles/images/zenn-github-repository-name___img-github-search.png)
+
+9/20日時点で、22件のリポジトリがHITしました。
+以下、リポジトリ名の多い順のリストです。
+
+ - zenn-contents (6件)
+   - [heriet/zenn-content](https://github.com/heriet/zenn-content)
+   - [kateinoigakukun/zenn-contents](https://github.com/kateinoigakukun/zenn-contents)
+   - [koher/zenn-contents](https://github.com/koher/zenn-contents)
+   - [proudust/zenn-contents](https://github.com/proudust/zenn-contents)
+   - [ria3100/zenn-contents](https://github.com/ria3100/zenn-contents)
+   - [turara/zenn-contents](https://github.com/turara/zenn-contents)
+ - zenn (6件)
+   - [e-jigsaw/zenn](https://github.com/e-jigsaw/zenn)
+   - [mcasashi-aso/zenn](https://github.com/mcasashi-aso/zenn)
+   - [nikukyugamer/zenn](https://github.com/nikukyugamer/zenn)
+   - [steelydylan/zenn](https://github.com/steelydylan/zenn)
+   - [thanaism/zenn](https://github.com/thanaism/zenn)
+   - [y-takagi/zenn](https://github.com/y-takagi/zenn)
+ - zenn-dev (2件)
+   - [koji/zenn-dev](https://github.com/koji/zenn-dev)
+   - [skanehira/zenn-dev](https://github.com/skanehira/zenn-dev)
+ - zenn-docs
+   - [MakotoUwaya/zenn-docs](https://github.com/MakotoUwaya/zenn-docs)
+ - zenn-doc
+   - [tennashi/zenn-doc](https://github.com/tennashi/zenn-doc)
+ - zenn.dev
+   - [kou029w/zenn.dev](https://github.com/kou029w/zenn.dev)
+ - zenn-articles
+   - [regonn/zenn-articles](https://github.com/regonn/zenn-articles)
+ - zenn-articles-and-books
+   - [tsuyoshicho/zenn-articles-and-books](https://github.com/tsuyoshicho/zenn-articles-and-books)
+ - zennlog
+   - [d6rkaiz/zennlog](https://github.com/d6rkaiz/zennlog)
+ - Blog
+   - [Shougo/Blog](https://github.com/Shougo/Blog)
+ - alpaca-notes
+   - [hhiroshell/alpaca-notes](https://github.com/hhiroshell/alpaca-notes)
+
+実は、Zenn公式の記事のリポジトリ名は [zenn-dev/zenn-docs](https://github.com/zenn-dev/zenn-docs)
+なのですが、こちらのREADMEには、zenn-cli-guideへのリンクが貼られていなかったので、
+上記検索方法ではHITしませんでした。
 
 なお、 **`zenn-contents`は [GitHubリポジトリでZennのコンテンツを管理する](https://zenn.dev/zenn/articles/connect-to-github) 記事**
 の説明画像中で使われていました。
@@ -60,7 +103,7 @@ zenn-docsはZenn公式の記事のリポジトリ名としても使われてい�
 
 # 結局どうしたのか。
 
-ここで、zenn-contentsに仕様と思ったのですが、ふと、GitHubで記事を管理する利点の一つに、
+私は、zenn-contentsに決めようと思ったのですが、ふと、GitHubで記事を管理する利点の一つに、
 **GitHubの機能が使える** つまり、 **記事のプルリクができる** ことに気づきました。
 
 Qiitaでは、編集リクエストの機能があり、これが記事の質を高めるのにある程度貢献していると思っていますが、
