@@ -93,7 +93,7 @@ GitHub連携は公開リポジトリではなく、プライベートリポジ�
  - alpaca-notes
    - [hhiroshell/alpaca-notes](https://github.com/hhiroshell/alpaca-notes)
 
-実は、Zenn公式の記事のリポジトリ名は [zenn-dev/zenn-docs](https://github.com/zenn-dev/zenn-docs)
+実は、Zenn公式の記事のリポジトリ名は **zenn-docs**([zenn-dev/zenn-docs](https://github.com/zenn-dev/zenn-docs))
 なのですが、こちらのREADMEには、zenn-cli-guideへのリンクが貼られていなかったので、
 上記検索方法ではHITしませんでした。
 
@@ -117,7 +117,9 @@ Qiitaでは、編集リクエストの機能があり、これが記事の質を
 と考え、私は「ユーザ名-zenn-contents」というリポジトリ名にしました。
 (zenn-docsだと、zenn自体のドキュメントというニュアンスが出るので。)
 
+↓ 筆者の作成したzenn投稿記事用GitHubリポジトリ
 https://github.com/j5c8k6m8/j5c8k6m8-zenn-contents
+
 
 # 公開リポジトリ管理のメリット/デメリット
 
@@ -144,4 +146,4 @@ GitHubでの管理には、無限の可能性を感じているので、そこ�
 
 私のリポジトリは、Dockerでの構築手順を追記してるので、次はここらへんを。
 
-https://github.com/j5c8k6m8/j5c8k6m8-zenn-contents
+(あと本記事のリストを作成できるscriptの作成とか)
