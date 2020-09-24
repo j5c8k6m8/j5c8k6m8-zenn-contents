@@ -17,7 +17,6 @@
 ``` shell
 $ docker build -t zenn-contents .
 $ docker run --name zenn --rm -v $PWD:/app/zenn-contents -w /app/zenn-contents -it zenn-contents ash
-/app # cd zenn-contents
 /app/zenn-contents # npm init --yes
 /app/zenn-contents # npm install zenn-cli
 /app/zenn-contents # npx zenn init
@@ -28,7 +27,7 @@ $ docker run --name zenn --rm -v $PWD:/app/zenn-contents -w /app/zenn-contents -
 ``` shell
 docker run --name zenn --rm -d -v $PWD:/app/zenn-contents -w /app/zenn-contents -p 80:8000 zenn-contents
 # Linuxで開発ユーザとコンテナのユーザを合わせる場合
-# docker run --name zenn --rm -d -v $PWD:/app/zenn-contents -w /app/zenn-contents -p 80:8000 -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u $(id -u $USER):$(id -g $USER) zenn-contents
+# docker run --name zenn --rm -d -v $PWD:/app/zenn-contents -w /app/zenn-contents -p 80:8000 -u $(id -u $USER):$(id -g $USER) zenn-contents
 ```
 
 ## コマンド実行
