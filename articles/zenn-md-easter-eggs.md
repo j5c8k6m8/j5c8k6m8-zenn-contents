@@ -87,17 +87,19 @@ foo@bar.baz
 https://fonts.google.com/specimen/Inter?query=Inter&preview.text=%3C----&preview.text_type=custom
 
 
-## HTMLはすべて無効
+## HTML
+
+### インラインコメントは有効
+
+アップデートによりインラインコメントを記載できるようになった。
+
+@[tweet](https://twitter.com/zenn_dev/status/1310821183567192064)
+
+### 上記以外は無効
 
 `<font color="red">aaa</font>`: <font color="red">aaa</font>
 
-や
-
-`<!-- コメント -->`: <!-- コメント -->
-
-もHTMLとして解釈されない。
-
-コメントを書く方法は用意してほしい
+などはHTMLとして解釈されない
 
 
 ## Markdownの原文を見る
