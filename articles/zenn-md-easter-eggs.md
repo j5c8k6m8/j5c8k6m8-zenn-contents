@@ -101,6 +101,9 @@ https://fonts.google.com/specimen/Inter?query=Inter&preview.text=%3C----&preview
 
 などはHTMLとして解釈されない
 
+※ 文字色は強調のパターンを増やしたくないため、サポートされない予定
+
+https://github.com/zenn-dev/zenn-roadmap/issues/87
 
 ## Markdownの原文を見る
 
