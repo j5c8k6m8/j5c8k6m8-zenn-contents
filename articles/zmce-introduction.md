@@ -87,6 +87,10 @@ $ git submodule add https://github.com/j5c8k6m8/zmce.git submodules/zmce
 
 コードを参照させたい記事、または、本に以下のような記法で、空のコードブロックを記載してください。
 
+:::message
+参照先パスには、submodulesディレクトリ以下の相対パスを指定して下さい。
+:::
+
 ````` md:test.md
 # テスト記事
 
