@@ -41,4 +41,6 @@ docker exec -it zenn ash
 
 # zmceコンテナ実行(zmce開発用)
 
+``` shell
 docker run --name zmce --rm -v $ZENN_HOME/submodules/zmce:/app/zmce -w /app/zmce -u $(id -u $USER):$(id -g $USER) -it node bash
+```
