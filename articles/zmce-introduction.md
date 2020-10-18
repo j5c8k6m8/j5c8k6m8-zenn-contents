@@ -10,182 +10,770 @@ published: true
 
 **Zenn Markdown Code Embed** の頭文字を取った **npmパッケージ** です。
 
-**コマンドひとつで、記事中のコードブロックを更新する** ためのツールです。
-
-https://www.npmjs.com/package/zmce
-https://github.com/j5c8k6m8/zmce
+**コマンドひとつで、Zennの記事/本 のコードブロックを更新する** ためのツールです。
 
 :::message
-現在のバージョンは、v0.0.2です。今後、破壊的な仕様変更をする可能性があります。
+本記事は、 **v0.1.0以降** のモジュールに対する説明です。
+バージョンは **`npm info zmce`** で確認し、v0.1.0以前のモジュールの場合、
+**`npm install zmce@latest`** でアップデートしてください。
 :::
 
-# 前提環境 / 想定ユーザ
+# 前提環境
 
  1. **[Zenn](https://zenn.dev/)** で **記事** または **本** を執筆している。
  2. **[GitHubリポジトリでZennのコンテンツを管理](https://zenn.dev/zenn/articles/connect-to-github)** している。
- 3. 記事または本で、 **別のGitリポジトリのコードを参照** している。
- 4. 記事または本を執筆する際、 **参照コードを都度コピペしたくない** と感じている。
 
-# 導入手順
+# 想定ユーザ
 
-## 0. 事前準備
+ 1. 記事または本の執筆時に、 **別ファイルのコードを参照しているが、都度コピペしたくない** と感じている。
+ 2. 記事または本の執筆時に、 **エディタのモードを切替えるため、コードは別ファイルに記載したい** と感じている。
 
- - あらかじめ、 **[Zenn CLIを導入](https://zenn.dev/zenn/articles/install-zenn-cli)** する必用があります。
+# 導入手順(npmインストール)
 
-## 1. zmceをインストールする
+ 1. あらかじめ、 **[Zenn CLIを導入](https://zenn.dev/zenn/articles/install-zenn-cli)** します。
+ 2. Zennのルートディレクトリで、以下のコマンドを実行します。  
+**$ `npm install zmce`**
+ 3. Zennのルートディレクトリに、「submodules」ディレクトリを作成します。  
+**$ `mkdir submodules`**
 
-Zennのルートディレクトリで、以下のコマンドを実行します。
-
-``` sh
-$ npm install zmce # zmceを導入
-```
-
-これでディレクトリにzmceがインストールされます。
-
-## 2. submodulesディレクトリを作成する
-
-Zennのルートディレクトリ下に、submodulesディレクトリを作成します。
-
-``` sh
-$ mkdir submodules
-```
-
-## 3. 導入完了🎉
-
-これでzmceの導入は完了です。以下のコマンドを実行することで、記事または本が更新されます。
+これでzmceの導入は完了です🎉
 
 :::message
-この時点では参照先のGitリポジトリが存在しないため、実際には更新されることはありません。
-コマンドが正常終了することを確認してください。
+submodulesのディレクトリの作成は必須ではなく **推奨(デフォルト)** です。
+必要に応じて、config設定で名称を変更して利用することもできます。
 :::
-
-``` sh
-$ npx zmce
-[START] zmce
-[ END ] zmce
-```
-
 
 # 使い方
 
-## 1. サブモジュールを追加する
-
-zmceでは、記事または本で参照する対象のGitリポジトリを **Gitのサブモジュールとして管理** することを推奨します。
-submodulesディレクトリ下に、対象のGitリポジトリをサブモジュールとして追加してください。
+**`npx zmce`** コマンドで、 **記事/本 が更新** されます。
 
 :::message
-zmceは、直接Gitを利用するわけではないので、submodules下にディレクトリを作成すれば、Gitのサブモジュールではなくても構いません。
-submodules下に、exportしたり、.gitignoreに記載してcloneしても問題なく使えます。
+後述する **zmce拡張記法** を用いていなければ、 **コマンドを実行しても 記事/本 は更新されません** が、念のため、Gitのワークツリーに変更が無い状態で実行することを推奨します。
 :::
 
-``` sh
-$ # 以下の例では、zmce自体のGitリポジトリを参照先リポジトリとして設定します。
-$ git submodule add https://github.com/j5c8k6m8/zmce.git submodules/zmce
-```
-
-## 2. 参照先ファイルを指定する
-
-コードを参照させたい記事、または、本に以下のような記法で、空のコードブロックを記載してください。
-
-:::message
-参照先パスには、submodulesディレクトリ以下の相対パスを指定して下さい。
-:::
-
-````` md:test.md
-# テスト記事
-
-``` コード:名称(表示用):参照先パス
-```
-`````
-
-## 3. コマンドを実行する
-
-以下の、コマンドを実行することで、空のコードブロック内に参照先のパスの内容が記載されます。
-
-``` sh
+``` shell:変更対象が存在しない / 変更がない場合
 $ npx zmce
-[START] zmce
-[articles/test.md] コードブロックを修正しました。
-[ END ] zmce
+[zmce] 処理を開始します。
+[zmce] 処理を終了します。
 ```
 
-````` md:test.md
-# テスト記事
-
-``` コード:名称(表示用):参照先パス
-参照先パスのファイルの内容
+``` shell:変更があった場合
+$ npx zmce
+[zmce] 処理を開始します。
+[articles/zmce-introduction.md] コードブロックを修正しました。
+[zmce] 処理を終了します。
 ```
-`````
 
-参照先パスの内容が変わった場合は、再度コマンドを実行することで、参照内容を最新化できます。
+# zmce拡張記法
+
+zmceでは、 **Zennのマークダウン記法で表示されない部分を利用** し、
+**zmceコマンドで反復可能な更新[^repeat]** をするための拡張記法を使います。
+
+[^repeat]: コマンドを複数回実施しても結果が変らないこと。参照先の変更をコマンド実行で、いつでも反映できることを担保する。コードブロックを置換する際は、 置換対象コードブロック区切り文字列 が参照先に含まれている場合は、警告を表示し、置換を行わない制御をしている。
+
+## コードブロックに外部ファイルを埋め込む
+
+**[コードブロック記法](https://zenn.dev/zenn/articles/markdown-guide#%E3%82%B3%E3%83%BC%E3%83%89%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF)** の、 **言語/ファイル名指定部分を拡張** します。
+
+コードブロックに埋め込みたいファイルの参照パスを、
+**`言語:ファイル名:参照パス` のように:区切りの三番目に記載** します。
+
+:::message
+ZennのMarkdown記法では、:区切りの三番目以降は無視されます(使われません)。
+:::
+
+ファイル名を指定したくない場合は、
+**`言語::参照パス` のように省略して記載** することも可能です。
+
+**参照パスは、用途に応じて以下の3種類の記法** ができます。
+（単一の 記事/本 中で **用途に応じて複数の記法を混在** できます。）
+
+ 1. **記事/本 からの相対パスで記載する** (`./` もしくは `../`はじまりのパス)
+ 2. **参照用ディレクトリ(submodules) からの相対パスで記載する** (先頭が、`/` `./` `../`ではじまらないパス)
+ 3. **絶対パスで記載する** (先頭が、`/` ではじまるパス)
+
+---
+
+### １． 記事/本 からの相対パスで記載する
+
+`./sample/helloWorld.js` や `./memo.txt` や `../package.json` など、
+**`./` もしくは `../`はじまりのパス** は、
+**記事/本 からの相対パス** として扱います。
+
+:::message
+記事/本 のために作成した、 **専用のスニペットやメモを参照** することを想定しています。
+:::
+
+:::details 使用例を見る
+以下のような構成で 記事/本 を作成します。
+
+``` console:フォルダ構成
+|--articles
+|  |--sample_article.md
+|  |--article_memo.txt
+|  |--sample
+|  |  |--helloWorld.js
+|--books
+|  |--sample_book
+|  |  |--config.yaml
+|  |  |--example1.md
+|  |  |--example2.md
+|  |  |--fizzbuzz
+|  |  |  |--fizzbuzz.js
+|--README.md
+```
+
+~~~ md:sample_article.md(コマンド実行前):zmce/test/description_case/relative_path_description/received/articles/sample_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# SAMPLE
+
+``` txt:article_memo.txt:./article_memo.txt
+```
+
+``` js:helloWorld.js:./sample/helloWorld.js
+```
+
+``` md:README.md:../README.md
+```
+
+~~~
+
+~~~ txt:article_memo.txt:zmce/test/description_case/relative_path_description/received/articles/article_memo.txt
+記事メモ
+~~~
+
+~~~ js:helloWorld.js:zmce/test/description_case/relative_path_description/received/articles/sample/helloWorld.js
+console.log('Hello World!!');
+~~~
+
+~~~ yaml:sample_book/config.yaml:zmce/test/description_case/relative_path_description/received/books/sample_book/config.yaml
+title: ""
+summary: ""
+topics: []
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - example1
+  - example2
+
+~~~
+
+~~~ md:sample_book/example1.md(コマンド実行前):zmce/test/description_case/relative_path_description/received/books/sample_book/example1.md
+---
+title: ""
+---
+
+# fizzbuzz
+
+``` js:fizzbuzz.js:./fizzbuzz/fizzbuzz.js
+```
+
+~~~
+
+~~~ md:sample_book/example2.md(コマンド実行前):zmce/test/description_case/relative_path_description/received/books/sample_book/example2.md
+---
+title: ""
+---
+
+# embed config.yaml
+
+``` yaml:config.yaml:./config.yaml
+```
+
+``` md:README.md:../../README.md
+```
+
+~~~
+
+~~~  js:fizzbuzz.js:zmce/test/description_case/relative_path_description/received/books/sample_book/fizzbuzz/fizzbuzz.js
+for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
+~~~
+
+~~~ md:README.md:zmce/test/description_case/relative_path_description/received/README.md
+# Docs for zenn.dev
+https://zenn.dev/zenn
+~~~
+
+コマンドを実行すると、 マークダウンファイルが更新されます。
+
+``` shell:コマンド実行
+$ npx zmce
+[zmce] 処理を開始します。
+[articles/sample_article.md] コードブロックを修正しました。
+[books/sample_book/example1.md] コードブロックを修正しました。
+[books/sample_book/example2.md] コードブロックを修正しました。
+[zmce] 処理を終了します。
+```
+
+~~~ md:sample_articles.md(コマンド実行後):zmce/test/description_case/relative_path_description/expected/articles/sample_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# SAMPLE
+
+``` txt:article_memo.txt:./article_memo.txt
+記事メモ
+```
+
+``` js:helloWorld.js:./sample/helloWorld.js
+console.log('Hello World!!');
+```
+
+``` md:README.md:../README.md
+# Docs for zenn.dev
+https://zenn.dev/zenn
+```
+
+~~~
+
+~~~ md:sample_book/example1.md(コマンド実行後):zmce/test/description_case/relative_path_description/expected/books/sample_book/example1.md
+---
+title: ""
+---
+
+# fizzbuzz
+
+``` js:fizzbuzz.js:./fizzbuzz/fizzbuzz.js
+for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
+```
+
+~~~
+
+~~~ md:sample_book/example2.md(コマンド実行後):zmce/test/description_case/relative_path_description/expected/books/sample_book/example2.md
+---
+title: ""
+---
+
+# embed config.yaml
+
+``` yaml:config.yaml:./config.yaml
+title: ""
+summary: ""
+topics: []
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - example1
+  - example2
+
+```
+
+``` md:README.md:../../README.md
+# Docs for zenn.dev
+https://zenn.dev/zenn
+```
+
+~~~
+:::
+
+---
+
+### ２． 参照用ディレクトリ(submodules) からの相対パスで記載する
+
+`sample/helloWorld.js` や `memo.txt` のように、
+**先頭が、`/` `./` `../`ではじまらないパス** は、
+**参照用ディレクトリ(submodules) からの相対パス** として扱います。
+
+:::message
+記事/本 で Gitのサブモジュール[^submodule]等で、**他のリポジトリなどを参照** することを想定しています。
+**参照用ディレクトリ(submodules) 下に参照先を配置** して利用してください。
+Gitのサブモジュールの利用を推奨していますが、サブモジュールを使わずに配置しても問題ありません。
+:::
+
+:::message
+参照用ディレクトリ名は、デフォルト(指定なし)では 「submodules」 ですが、**zmce.config.ymlに設定すれば、(全体/記事/本 毎に) 変更** できます。
+:::
+
+[^submodule]: Gitのサブモジュールは、 `git submodule` コマンドで管理できます。例えば、zmce自体のGitリポジトリを参照先リポジトリとして追加するには、 `git submodule add https://github.com/j5c8k6m8/zmce.git submodules/zmce` を実行します。
 
 
-# 注意事項
+:::details 使用例を見る
+以下のような構成で 記事/本 を作成します。
 
- - Zennのコードブロック記法は、 **[[小ネタ] 公式に記載されていない、ZennのMarkdown記法#コードブロック](https://zenn.dev/j5c8k6m8/articles/zenn-md-easter-eggs#%E3%82%B3%E3%83%BC%E3%83%89%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF)** の通り、複数の記載方法がありますが、 **「^```(行の先頭からバッククォート3つ)」のみに対応** しています。
- - **「^```(行の先頭からバッククォート3つ)」を含むファイルは、参照先として使用できません。**  
- (警告メッセージが表示されます。)
+``` console:フォルダ構成
+|--articles
+|  |--sample_article.md
+|--books
+|  |--sample_book
+|  |  |--config.yaml
+|  |  |--example1.md
+|  |  |--example2.md
+|--submodules
+|  |--article_memo.txt
+|  |--sample
+|  |  |--helloWorld.js
+|  |--fizzbuzz
+|  |  |--fizzbuzz.js
+|--README.md
+```
 
-# 使用例
+~~~ md:sample_article.md(コマンド実行前):zmce/test/description_case/simple_path_description/received/articles/sample_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
 
-本記事は以下に、zmceのソースを、zmceコマンドを用いて埋め込んでいます。
-本記事の原文(テキスト)は、 **[GitHubで参照](https://github.com/j5c8k6m8/j5c8k6m8-zenn-contents/blob/master/articles/zmce-introduction.md)** できます。
+# SAMPLE
 
-:::details zmceのソースコード
-``` ts:zmce.ts:zmce/src/zmce.ts
+``` txt:article_memo.txt:article_memo.txt
+```
+
+``` js:helloWorld.js:sample/helloWorld.js
+```
+
+## 参照用ディレクトリ(submodules) からの相対パスではZennのルートディレクトリは参照できない
+
+~~~
+
+~~~ yaml:sample_book/config.yaml:zmce/test/description_case/simple_path_description/received/books/sample_book/config.yaml
+title: ""
+summary: ""
+topics: []
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - example1
+  - example2
+
+~~~
+
+~~~ md:sample_book/example1.md(コマンド実行前):zmce/test/description_case/simple_path_description/received/books/sample_book/example1.md
+---
+title: ""
+---
+
+# fizzbuzz
+
+``` js:fizzbuzz.js:fizzbuzz/fizzbuzz.js
+```
+
+~~~
+
+~~~ md:sample_book/example2.md(コマンド実行前):zmce/test/description_case/simple_path_description/received/books/sample_book/example2.md
+---
+title: ""
+---
+
+# embed config.yaml
+
+## 参照用ディレクトリ(submodules) からの相対パスではbooksディレクトリ下は参照できない
+
+## 参照用ディレクトリ(submodules) からの相対パスではZennのルートディレクトリは参照できない
+
+~~~
+
+~~~ txt:article_memo.txt:zmce/test/description_case/simple_path_description/received/submodules/article_memo.txt
+記事メモ
+~~~
+
+~~~ js:helloWorld.js:zmce/test/description_case/simple_path_description/received/submodules/sample/helloWorld.js
+console.log('Hello World!!');
+~~~
+
+~~~  js:fizzbuzz.js:zmce/test/description_case/simple_path_description/received/submodules/fizzbuzz/fizzbuzz.js
+for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
+~~~
+
+~~~ md:README.md:zmce/test/description_case/simple_path_description/received/README.md
+# Docs for zenn.dev
+https://zenn.dev/zenn
+~~~
+
+コマンドを実行すると、 マークダウンファイルが更新されます。
+
+``` shell:コマンド実行
+$ npx zmce
+[zmce] 処理を開始します。
+[articles/sample_article.md] コードブロックを修正しました。
+[books/sample_book/example1.md] コードブロックを修正しました。
+[zmce] 処理を終了します。
+```
+
+~~~ md:sample_articles.md(コマンド実行後):zmce/test/description_case/simple_path_description/expected/articles/sample_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# SAMPLE
+
+``` txt:article_memo.txt:article_memo.txt
+記事メモ
+```
+
+``` js:helloWorld.js:sample/helloWorld.js
+console.log('Hello World!!');
+```
+
+## 参照用ディレクトリ(submodules) からの相対パスではZennのルートディレクトリは参照できない
+
+~~~
+
+~~~ md:sample_book/example1.md(コマンド実行後):zmce/test/description_case/simple_path_description/expected/books/sample_book/example1.md
+---
+title: ""
+---
+
+# fizzbuzz
+
+``` js:fizzbuzz.js:fizzbuzz/fizzbuzz.js
+for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
+```
+
+~~~
+:::
+
+---
+
+### ３． 絶対パスで記載する
+
+`/proc/version` や `/etc/os-release` のように、
+**先頭が、`/` ではじまるパス** は、**絶対パス** として扱います。
+
+:::message
+記事/本 で **OSの情報など実行環境に関する情報を埋め込む** などの利用を想定しています。
+:::
+
+:::details 使用例を見る
+以下のような、sample_article.md ファイルを作成します。
+
+~~~ md:sample_article.md(コマンド実行前):zmce/test/description_case/abs_path_description/received/articles/sample_article.md
+# Sample Articles(バージョン情報の埋め込み)
+
+``` txt:/proc/version:/proc/version
+```
+
+``` txt:/etc/os-release:/etc/os-release
+```
+~~~
+
+筆者のZennの執筆環境で実行すると、以下のように更新されます。
+
+``` shell:コマンド実行
+$ npx zmce
+[zmce] 処理を開始します。
+[articles/sample_article.md] コードブロックを修正しました。
+[zmce] 処理を終了します。
+```
+
+~~~ md:sample_article.md(コマンド実行後):zmce/test/description_case/abs_path_description/expected/articles/sample_article.md
+# Sample Articles(バージョン情報の埋め込み)
+
+``` txt:/proc/version:/proc/version
+Linux version 3.10.0-1062.18.1.el7.x86_64 (mockbuild@kbuilder.bsys.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-39) (GCC) ) #1 SMP Tue Mar 17 23:49:17 UTC 2020
+
+```
+
+``` txt:/etc/os-release:/etc/os-release
+PRETTY_NAME="Debian GNU/Linux 9 (stretch)"
+NAME="Debian GNU/Linux"
+VERSION_ID="9"
+VERSION="9 (stretch)"
+VERSION_CODENAME=stretch
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+```
+~~~
+:::
+
+---
+
+# zmce.config.yaml によるカスタマイズ
+
+Zennのルートディレクトリに **zmce.config.yaml** を配置することで、
+**`npx zmce`コマンドの挙動を変更** できます。
+以下の、2点について、 **全体(デフォルト) と、記事/本毎** の挙動を設定できます。
+
+ 1. **参照用ディレクトリ名** (キー: `relativeRoot`, デフォルト: `submodules`)
+ 2. **置換対象コードブロック区切り文字列** (キー: `fenceStr`, デフォルト: ` ``` `)
+
+コンフィグファイルのフォーマットは以下の通りです。
+各キーは省略可能(省略時はデフォルトを利用)です。
+
+:::message
+記事/本 毎に設定を上書きできますが、チャプター毎の設定はできません。
+:::
+
+``` yaml
+relativeRoot: "submodules"
+fenceStr: "```"
+articles: # 記事毎の設定(上書き)
+    sample_article1: # 記事のスラッグ
+        relativeRoot: ""
+        fenceStr: "~~~"
+    sample_article2: # 記事のスラッグ
+        relativeRoot: ""
+        fenceStr: "~~~"
+books: # 本毎の設定(上書き)
+    sample_book1: # 本のスラッグ
+        relativeRoot: ""
+        fenceStr: "~~~"
+    sample_book2: # 本のスラッグ
+        relativeRoot: ""
+        fenceStr: "~~~"
+```
+
+---
+
+### １． 参照用ディレクトリ名のカスタマイズ
+
+キー: `relativeRoot`, デフォルト: `submodules`
+
+参照用のディレクトリ名を設定することができます。
+
+:::message
+参照用ディレクトリに、 **`""(空文字)` を設定**すると、
+参照用ディレクトリが **Zennのルートディレクトリ** になります。
+:::
+
+---
+
+### ２． 置換対象コードブロック区切り文字列のカスタマイズ
+
+キー: `fenceStr`, デフォルト: ` ``` `
+
+Zennのコードブロックは、` ``` `のみではなく、**`~~~` のように、チルダを用いる** ことができます。また、 **` ```` ` のように連続3つ以上** であれば、コードブロックの区切り文字として判定されます。これは、**コードブロック中にコードブロックを記載する時** にも利用できます。[^fence_ref]
+
+[^fence_ref]: **[[小ネタ] 公式に記載されていない、ZennのMarkdown記法 - Zenn](https://zenn.dev/j5c8k6m8/articles/zenn-md-easter-eggs#%E3%82%B3%E3%83%BC%E3%83%89%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF)** 参照
+
+デフォルトでは、**行の先頭からバッククォート3つ以上の文字列** を含むファイルは、参照先として使用できません。　 (警告メッセージが表示されます。)
+**コードブロックを含むマークダウンを置換したい場合** は、置換対象コードブロック区切り文字列を `~~~` や、` ```` ` に変更してください。
+
+# zmceのソースコード
+
+:::details zmceのソースコードを見る
+~~~ ts:zmce.ts:zmce/src/zmce.ts
 // ref: https://github.com/zenn-dev/zenn-editor/blob/master/packages/zenn-cli/utils/api/
 import fs from "fs-extra";
-import { join } from "path";
+import { basename, dirname, join } from "path";
+import yaml from "js-yaml";
 import colors from "colors/safe";
 
 const articlesDirectoryName = "articles";
 const booksDirectoryName = "books";
-const modulesDirectoryName = "submodules";
-const replaceCodeSymbol = "```";
-const replaceCodePattern = new RegExp(`(^${replaceCodeSymbol})([^:\n]*):([^:\n]*):([^:\n]+)(.*$)([^]*?)(^${replaceCodeSymbol}$)`, 'gm');
-const checkPattern = new RegExp(`^${replaceCodeSymbol}`, 'm');
-const mdRegex = /\.md$/;
+const configFileNameWithoutExtension = "zmce.config";
+const defaultRelativeRoot = "submodules";
+const defaultFenceStr = "```";
+
+type Config = {
+  defaultFileConfig: FileConfig;
+  articles: { [key: string]: FileConfig };
+  books: { [key: string]: FileConfig };
+};
+
+type FileConfig = {
+  relativeRoot: string;
+  fenceStr: FenceStr;
+};
+
+type FenceStr = string;
+
+function isFenceStr(arg: unknown): arg is FenceStr {
+  return typeof arg === "string" && /^(````*|~~~~*)$/.test(arg);
+}
 
 export function main() {
-  console.info(colors.cyan(`[START] zmce`));
-
-  try {
-    fs.readdirSync(join(process.cwd(), modulesDirectoryName));
-  } catch (e) {
-    console.error(
-      colors.red(
-        `プロジェクトルートに${modulesDirectoryName}ディレクトリを作成してください`
-      )
+  consoleInfoSimple(`[zmce] 処理を開始します。`);
+  const cwd = process.cwd();
+  const config = getConfig(cwd);
+  const articleFiles = getArticleFiles(cwd);
+  const chapterFiles = getChapterFiles(cwd);
+  if (process.exitCode == 1) {
+    consoleInfoSimple(
+      `[zmce] エラーが発生したため、置換処理を行わずに終了します。`
     );
-    process.exitCode = 1;
+  } else {
+    articleFilesCodeEmbed(cwd, articleFiles, config);
+    chapterFilesCodeEmbed(cwd, chapterFiles, config);
+    consoleInfoSimple(`[zmce] 処理を終了します。`);
   }
+}
 
-  let articleFiles;
+function getConfig(basePath: string): Config {
+  let fileRaw = null;
+  let configFileName = `${configFileNameWithoutExtension}.yaml`;
+  try {
+    fileRaw = fs.readFileSync(join(basePath, configFileName), "utf8");
+  } catch (e) {
+    try {
+      let configFileName = `${configFileNameWithoutExtension}.yml`;
+      fileRaw = fs.readFileSync(join(basePath, configFileName), "utf8");
+    } catch (e) {}
+  }
+  return buildConfig(fileRaw, configFileName);
+}
+
+function buildConfig(arg: string | null, configFileName: string): Config {
+  let fileConfig: any;
+  let relativeRoot = defaultRelativeRoot;
+  let fenceStr = defaultFenceStr;
+  const articles: { [key: string]: FileConfig } = {};
+  const books: { [key: string]: FileConfig } = {};
+  if (arg) {
+    try {
+      fileConfig = yaml.safeLoad(arg);
+    } catch (e) {
+      consoleError(
+        `[${configFileName}] 設定ファイルのフォーマットがyamlファイルとして不正です。`
+      );
+    }
+  }
+  if (isHash(fileConfig)) {
+    if ("relativeRoot" in fileConfig) {
+      if (typeof fileConfig.relativeRoot === "string") {
+        relativeRoot = fileConfig.relativeRoot;
+      } else {
+        consoleError(
+          `[${configFileName}] 設定ファイルのrelativeRootプロパティには文字列を指定してください。`
+        );
+      }
+    }
+    if ("fenceStr" in fileConfig) {
+      if (isFenceStr(fileConfig.fenceStr)) {
+        fenceStr = fileConfig.fenceStr;
+      } else {
+        consoleError(
+          `[${configFileName}] 設定ファイルのfenceStrプロパティには「*」もしくは「~」の連続した3文字以上の文字列を指定してください。`
+        );
+      }
+    }
+    if ("articles" in fileConfig) {
+      if (isHash(fileConfig.articles)) {
+        for (let key in fileConfig.articles) {
+          articles[key] = buildFileConfig(
+            fileConfig.articles[key],
+            relativeRoot,
+            fenceStr,
+            `articles.${key}`,
+            configFileName
+          );
+        }
+      } else {
+        consoleError(
+          `[${configFileName}] 設定ファイルのarticlesプロパティは連想配列(ハッシュ)で記載してください。`
+        );
+      }
+    }
+    if ("books" in fileConfig) {
+      if (isHash(fileConfig.books)) {
+        for (let key in fileConfig.books) {
+          books[key] = buildFileConfig(
+            fileConfig.books[key],
+            relativeRoot,
+            fenceStr,
+            `books.${key}`,
+            configFileName
+          );
+        }
+      } else {
+        consoleError(
+          `[${configFileName}] 設定ファイルのbooksプロパティは連想配列(ハッシュ)で記載してください。`
+        );
+      }
+    }
+  } else if (fileConfig != null) {
+    consoleError(`[${configFileName}] 連想配列(ハッシュ)で記載してください。`);
+  }
+  return {
+    defaultFileConfig: {
+      relativeRoot: relativeRoot,
+      fenceStr: fenceStr,
+    },
+    articles: articles,
+    books: books,
+  };
+}
+
+function buildFileConfig(
+  arg: any,
+  relativeRoot: string,
+  fenceStr: FenceStr,
+  propertyName: string,
+  configFileName: string
+): FileConfig {
+  if (isHash(arg)) {
+    if ("relativeRoot" in arg) {
+      if (typeof arg.relativeRoot === "string") {
+        relativeRoot = arg.relativeRoot;
+      } else {
+        consoleError(
+          `[${configFileName}] 設定ファイルの${propertyName}.relativeRootプロパティには文字列を指定してください。`
+        );
+      }
+    }
+    if ("fenceStr" in arg) {
+      if (isFenceStr(arg.fenceStr)) {
+        fenceStr = arg.fenceStr;
+      } else {
+        consoleError(
+          `[${configFileName}] 設定ファイルの${propertyName}.fenceStrプロパティには「*」もしくは「~」の連続した3文字以上の文字列を指定してください。`
+        );
+      }
+    }
+  } else if (arg != null) {
+    consoleError(
+      `[${configFileName}] 設定ファイルの${propertyName}プロパティは連想配列(ハッシュ)で記載してください。`
+    );
+  }
+  return {
+    relativeRoot: relativeRoot,
+    fenceStr: fenceStr,
+  };
+}
+
+function isHash(arg: unknown) {
+  return typeof arg == "object" && !Array.isArray(arg);
+}
+
+function getArticleFiles(basePath: string) {
+  let articleFiles: string[] = [];
   try {
     const articleAllFiles = fs.readdirSync(
-      join(process.cwd(), articlesDirectoryName)
+      join(basePath, articlesDirectoryName)
     );
     articleAllFiles.sort();
     articleFiles = articleAllFiles
-      .filter((f) => f.match(mdRegex))
+      .filter((f) => f.match(/\.md$/))
       .map((f) => join(articlesDirectoryName, f));
   } catch (e) {
-    console.error(
-      colors.red(
-        `プロジェクトルートに${articlesDirectoryName}ディレクトリを作成してください`
-      )
+    consoleError(
+      `プロジェクトルートに${articlesDirectoryName}ディレクトリがありません。`
     );
-    process.exitCode = 1;
   }
+  return articleFiles;
+}
 
+function getChapterFiles(basePath: string) {
   const chapterFiles: string[] = [];
   try {
-    let allBookDirs = fs.readdirSync(join(process.cwd(), booksDirectoryName));
+    let allBookDirs = fs.readdirSync(join(basePath, booksDirectoryName));
     let bookDirs = allBookDirs.filter((f) => {
       try {
-        return fs
-          .statSync(join(process.cwd(), booksDirectoryName, f))
-          .isDirectory();
+        return fs.statSync(join(basePath, booksDirectoryName, f)).isDirectory();
       } catch (e) {
         return false;
       }
@@ -193,11 +781,11 @@ export function main() {
     bookDirs.forEach((bookDir) => {
       try {
         const bookChapterAllFiles = fs.readdirSync(
-          join(process.cwd(), booksDirectoryName, bookDir)
+          join(basePath, booksDirectoryName, bookDir)
         );
         bookChapterAllFiles.sort();
         bookChapterAllFiles
-          .filter((f) => f.match(mdRegex))
+          .filter((f) => f.match(/\.md$/))
           .forEach((f) =>
             chapterFiles.push(join(booksDirectoryName, bookDir, f))
           );
@@ -206,88 +794,164 @@ export function main() {
       }
     });
   } catch (e) {
-    console.error(
-      colors.red(
-        `プロジェクトルートに${booksDirectoryName}ディレクトリを作成してください`
-      )
+    consoleError(
+      `プロジェクトルートに${booksDirectoryName}ディレクトリがありません。`
     );
-    process.exitCode = 1;
   }
+  return chapterFiles;
+}
 
-  if (process.exitCode == 1) {
-    console.info(colors.cyan(`[ END ] zmce`));
-  } else {
-    const codeEmbed = (relativePath: string) => {
-      let text;
-      try {
-        text = fs.readFileSync(join(process.cwd(), relativePath), "utf8");
-      } catch (e) {
-        return;
-      }
-      let afterText = text.replace(
-        replaceCodePattern,
-        (
-          match,
-          beginMark,
-          codeType,
-          codeName,
-          codePath,
-          other,
-          code,
-          afterMark
-        ) => {
-          let afterCode;
-          try {
-            afterCode = fs.readFileSync(
-              join(process.cwd(), modulesDirectoryName, codePath.trim()),
-              "utf8"
-            );
-          } catch (e) {
-            console.warn(
-              colors.yellow(
-                `[${relativePath}] モジュールディレクトリに「${codePath.trim()}」ファイルがありません`
-              )
-            );
-            return match;
-          }
-          if (checkPattern.test(afterCode)) {
-            console.warn(
-              colors.yellow(
-                `[${relativePath}] 「${codePath.trim()}」ファイル内に使用できないパターン(^${replaceCodeSymbol})が含まれています。`
-              )
-            );
-            return match;
-          }
-          return `${beginMark}${codeType}:${codeName}:${codePath}${other}\n${afterCode}\n${afterMark}`;
-        }
+function articleFilesCodeEmbed(
+  basePath: string,
+  articleFiles: string[],
+  config: Config
+): void {
+  articleFiles.forEach((f) => {
+    let fileKey = basename(f, ".md");
+    codeEmbed(
+      basePath,
+      f,
+      config.articles[fileKey] || config.defaultFileConfig
+    );
+  });
+}
+
+function chapterFilesCodeEmbed(
+  basePath: string,
+  chapterFiles: string[],
+  config: Config
+): void {
+  chapterFiles.forEach((f) => {
+    let fileKey = basename(dirname(f));
+    codeEmbed(basePath, f, config.books[fileKey] || config.defaultFileConfig);
+  });
+}
+function codeEmbed(
+  basePath: string,
+  mdPath: string,
+  fileConfig: FileConfig
+): void {
+  let text;
+  try {
+    text = fs.readFileSync(join(basePath, mdPath), "utf8");
+  } catch (e) {
+    return;
+  }
+  let afterText = text.replace(
+    getReplaceCodePattern(fileConfig.fenceStr),
+    (
+      match,
+      beginMark,
+      codeType,
+      codeName,
+      codePath,
+      other,
+      code,
+      afterMark
+    ) => {
+      let afterCode;
+      codePath = codePath.trim();
+      const [codeAbsPath, codeRelativePath] = getCodeAbsRelativePath(
+        basePath,
+        fileConfig.relativeRoot,
+        mdPath,
+        codePath
       );
-      if (afterText != text) {
-        fs.writeFileSync(join(process.cwd(), relativePath), afterText, "utf8");
-        console.info(`[${relativePath}] コードブロックを修正しました。`);
+      try {
+        afterCode = fs.readFileSync(
+          codeAbsPath,
+          "utf8"
+        );
+      } catch (e) {
+        consoleWarn(
+          `[${mdPath}] 「${codeRelativePath}」ファイルがありません`
+        );
+        return match;
       }
-    };
-    articleFiles?.forEach((f) => codeEmbed(f));
-    chapterFiles.forEach((f) => codeEmbed(f));
-    console.info(colors.cyan(`[ END ] zmce`));
+      if (getCheckPattern(fileConfig.fenceStr).test(afterCode)) {
+        consoleWarn(
+          `[${mdPath}] 「${codeRelativePath}」ファイル内に使用できないパターン(^${
+            fileConfig.fenceStr
+          })が含まれています。`
+        );
+        return match;
+      }
+      return `${beginMark}${codeType}:${codeName}:${codePath}${other}\n${afterCode}\n${afterMark}`;
+    }
+  );
+  if (afterText != text) {
+    fs.writeFileSync(join(basePath, mdPath), afterText, "utf8");
+    consoleInfo(`[${mdPath}] コードブロックを修正しました。`);
   }
 }
 
-```
+function getReplaceCodePattern(fenceStr: string) {
+  return new RegExp(
+    `(^${fenceStr})([^${fenceStr[0]}:\n]*):([^:\n]*):([^:\n]+)(.*$)([^]*?)(^${fenceStr}$)`,
+    "gm"
+  );
+}
+
+function getCheckPattern(fenceStr: string) {
+  return new RegExp(`^${fenceStr}`, "m");
+}
+
+function getCodeAbsRelativePath(
+  basePath: string,
+  relativeRoot: string,
+  mdPath: string,
+  codePath: string
+): [string, string] {
+  if (codePath.startsWith('/')) {
+    return [codePath, codePath];
+  } else if(/^(\.\/|\.\.\/)/.test(codePath)) {
+    let mdDir = dirname(mdPath)
+    return [join(basePath, mdDir, codePath), join(mdDir, codePath)];
+  } else {
+    return [join(basePath, relativeRoot, codePath), join(relativeRoot, codePath)];
+  }
+}
+
+function consoleError(msg: string): void {
+  process.exitCode = 1;
+  console.error(colors.red(msg));
+}
+
+function consoleWarn(msg: string): void {
+  console.warn(colors.yellow(msg));
+}
+
+function consoleInfo(msg: string): void {
+  console.info(colors.cyan(msg));
+}
+
+function consoleInfoSimple(msg: string): void {
+  console.info(msg);
+}
+
+~~~
 :::
 
 # その他
 
- - 今回はじめてnpmパッケージを公開しました。
- - 当初、HTMLのコメント記法を使用した、マクロ置換記法を作ろうと考えました。  
+ - 本記事の、使用例や、zmceのソースコードは、zmce拡張記法を用いて埋め込んでいます。  
+本記事の原文(テキスト)は、 **[GitHubで参照](https://raw.githubusercontent.com/j5c8k6m8/j5c8k6m8-zenn-contents/master/articles/zmce-introduction.md)** できます。
+ - **[コードブロックにファイル名を指定するPR](https://github.com/zenn-dev/zenn-editor/pull/47)** を出しました(merge済)。丁寧に確認して頂き、修正後当日中に(追加で必要な修正入れて頂き)リリースされました。迅速な対応に感謝です。
+  - 当初、HTMLのコメント記法を使用した、マクロ置換記法を作ろうと考えました。  
  しかし、Zennのリリース当時はHTMLコメントが使えなかったことと、コードブロックにファイル名を指定するIssuesが既に上がっていたことから、今回のコードブロックのコード名称を拡張する形式にしました。~~先にHTMLのコメント記法に対応が入るとは思わなかった😅~~  
  作成してみて、今の形式もシンプルでわかり易いと考え公開に踏み切りました。
   - 今後、以下のような拡張ができたらいいかと考えています。下記以外でもフィードバックを頂けると励みになります！
-    - 除外対象ファイルなどを細かく指定できるconfig(zmceconfig.json?)の作成
-    - configにより「```」以外の形式(「````」や「~~~」)への対応
+    - zmce.config.yamlの設定追加(スキップ対象の設定など)
+    - HTMLコメント記法を使用した、より制御の細かいマクロ置換記法の作成
     - 初期化コマンド(npx zmce init)対応
-    - HTMLコメント記法を使用した、マクロ置換記法の作成
-    - 特定の行のみを参照させるような指定方法の追加
+    - 特定の行やメソッドのみを参照させるような指定方法の追加
     - コマンドの実行結果の埋め込み等への対応
+    - コマンド追加(zmce clearなど。ブランチ別でコードを埋め込まない状態で管理するなど)
  - Zennにより、ローカル執筆環境のディレクトリ構成にarticlesやbooksなど、いい意味でConventionが設けられたため、このようなツールが作成しやすい環境ができたと思っています。zmceの思想や使用しているツールは今後、記事を書けたらいいな、と思ってます。
  - 私は心の中で「ジムチェ」と唱えながらコマンドをたたいています。
- - [PR](https://github.com/zenn-dev/zenn-editor/pull/47) 出しました。丁寧に確認して頂き、その日中に(追加で必要な修正入れて頂き)リリースされました。迅速な対応に感謝です。
+
+
+# link
+
+ - **npm** : https://www.npmjs.com/package/zmce
+ - **github** : https://github.com/j5c8k6m8/zmce
