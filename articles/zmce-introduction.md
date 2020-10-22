@@ -123,7 +123,7 @@ ZennのMarkdown記法では、:区切りの三番目以降は無視されます(
 |--README.md
 ```
 
-~~~ md:sample_article.md(コマンド実行前):zmce/test/description_case/relative_path_description/received/articles/sample_article.md
+````` md:sample_article.md(コマンド実行前):zmce/test/description_case/relative_path_description/received/articles/sample_article.md
 ---
 title: ""
 emoji: "🙆"
@@ -143,17 +143,17 @@ published: false
 ``` md:README.md:../README.md
 ```
 
-~~~
+`````
 
-~~~ txt:article_memo.txt:zmce/test/description_case/relative_path_description/received/articles/article_memo.txt
+````` txt:article_memo.txt:zmce/test/description_case/relative_path_description/received/articles/article_memo.txt
 記事メモ
-~~~
+`````
 
-~~~ js:helloWorld.js:zmce/test/description_case/relative_path_description/received/articles/sample/helloWorld.js
+````` js:helloWorld.js:zmce/test/description_case/relative_path_description/received/articles/sample/helloWorld.js
 console.log('Hello World!!');
-~~~
+`````
 
-~~~ yaml:sample_book/config.yaml:zmce/test/description_case/relative_path_description/received/books/sample_book/config.yaml
+````` yaml:sample_book/config.yaml:zmce/test/description_case/relative_path_description/received/books/sample_book/config.yaml
 title: ""
 summary: ""
 topics: []
@@ -164,9 +164,9 @@ chapters:
   - example1
   - example2
 
-~~~
+`````
 
-~~~ md:sample_book/example1.md(コマンド実行前):zmce/test/description_case/relative_path_description/received/books/sample_book/example1.md
+````` md:sample_book/example1.md(コマンド実行前):zmce/test/description_case/relative_path_description/received/books/sample_book/example1.md
 ---
 title: ""
 ---
@@ -176,9 +176,9 @@ title: ""
 ``` js:fizzbuzz.js:./fizzbuzz/fizzbuzz.js
 ```
 
-~~~
+`````
 
-~~~ md:sample_book/example2.md(コマンド実行前):zmce/test/description_case/relative_path_description/received/books/sample_book/example2.md
+````` md:sample_book/example2.md(コマンド実行前):zmce/test/description_case/relative_path_description/received/books/sample_book/example2.md
 ---
 title: ""
 ---
@@ -191,16 +191,16 @@ title: ""
 ``` md:README.md:../../README.md
 ```
 
-~~~
+`````
 
-~~~  js:fizzbuzz.js:zmce/test/description_case/relative_path_description/received/books/sample_book/fizzbuzz/fizzbuzz.js
+`````  js:fizzbuzz.js:zmce/test/description_case/relative_path_description/received/books/sample_book/fizzbuzz/fizzbuzz.js
 for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
-~~~
+`````
 
-~~~ md:README.md:zmce/test/description_case/relative_path_description/received/README.md
+````` md:README.md:zmce/test/description_case/relative_path_description/received/README.md
 # Docs for zenn.dev
 https://zenn.dev/zenn
-~~~
+`````
 
 コマンドを実行すると、 マークダウンファイルが更新されます。
 
@@ -213,7 +213,7 @@ $ npx zmce
 [zmce] 処理を終了します。
 ```
 
-~~~ md:sample_articles.md(コマンド実行後):zmce/test/description_case/relative_path_description/expected/articles/sample_article.md
+````` md:sample_articles.md(コマンド実行後):zmce/test/description_case/relative_path_description/expected/articles/sample_article.md
 ---
 title: ""
 emoji: "🙆"
@@ -237,9 +237,9 @@ console.log('Hello World!!');
 https://zenn.dev/zenn
 ```
 
-~~~
+`````
 
-~~~ md:sample_book/example1.md(コマンド実行後):zmce/test/description_case/relative_path_description/expected/books/sample_book/example1.md
+````` md:sample_book/example1.md(コマンド実行後):zmce/test/description_case/relative_path_description/expected/books/sample_book/example1.md
 ---
 title: ""
 ---
@@ -250,9 +250,9 @@ title: ""
 for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
 ```
 
-~~~
+`````
 
-~~~ md:sample_book/example2.md(コマンド実行後):zmce/test/description_case/relative_path_description/expected/books/sample_book/example2.md
+````` md:sample_book/example2.md(コマンド実行後):zmce/test/description_case/relative_path_description/expected/books/sample_book/example2.md
 ---
 title: ""
 ---
@@ -277,7 +277,7 @@ chapters:
 https://zenn.dev/zenn
 ```
 
-~~~
+`````
 :::
 
 ---
@@ -321,7 +321,7 @@ Gitのサブモジュールの利用を推奨していますが、サブモジ�
 |--README.md
 ```
 
-~~~ md:sample_article.md(コマンド実行前):zmce/test/description_case/simple_path_description/received/articles/sample_article.md
+````` md:sample_article.md(コマンド実行前):zmce/test/description_case/simple_path_description/received/articles/sample_article.md
 ---
 title: ""
 emoji: "🙆"
@@ -340,9 +340,9 @@ published: false
 
 ## 参照用ディレクトリ(submodules) からの相対パスではZennのルートディレクトリは参照できない
 
-~~~
+`````
 
-~~~ yaml:sample_book/config.yaml:zmce/test/description_case/simple_path_description/received/books/sample_book/config.yaml
+````` yaml:sample_book/config.yaml:zmce/test/description_case/simple_path_description/received/books/sample_book/config.yaml
 title: ""
 summary: ""
 topics: []
@@ -353,9 +353,9 @@ chapters:
   - example1
   - example2
 
-~~~
+`````
 
-~~~ md:sample_book/example1.md(コマンド実行前):zmce/test/description_case/simple_path_description/received/books/sample_book/example1.md
+````` md:sample_book/example1.md(コマンド実行前):zmce/test/description_case/simple_path_description/received/books/sample_book/example1.md
 ---
 title: ""
 ---
@@ -365,9 +365,9 @@ title: ""
 ``` js:fizzbuzz.js:fizzbuzz/fizzbuzz.js
 ```
 
-~~~
+`````
 
-~~~ md:sample_book/example2.md(コマンド実行前):zmce/test/description_case/simple_path_description/received/books/sample_book/example2.md
+````` md:sample_book/example2.md(コマンド実行前):zmce/test/description_case/simple_path_description/received/books/sample_book/example2.md
 ---
 title: ""
 ---
@@ -378,24 +378,24 @@ title: ""
 
 ## 参照用ディレクトリ(submodules) からの相対パスではZennのルートディレクトリは参照できない
 
-~~~
+`````
 
-~~~ txt:article_memo.txt:zmce/test/description_case/simple_path_description/received/submodules/article_memo.txt
+````` txt:article_memo.txt:zmce/test/description_case/simple_path_description/received/submodules/article_memo.txt
 記事メモ
-~~~
+`````
 
-~~~ js:helloWorld.js:zmce/test/description_case/simple_path_description/received/submodules/sample/helloWorld.js
+````` js:helloWorld.js:zmce/test/description_case/simple_path_description/received/submodules/sample/helloWorld.js
 console.log('Hello World!!');
-~~~
+`````
 
-~~~  js:fizzbuzz.js:zmce/test/description_case/simple_path_description/received/submodules/fizzbuzz/fizzbuzz.js
+`````  js:fizzbuzz.js:zmce/test/description_case/simple_path_description/received/submodules/fizzbuzz/fizzbuzz.js
 for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
-~~~
+`````
 
-~~~ md:README.md:zmce/test/description_case/simple_path_description/received/README.md
+````` md:README.md:zmce/test/description_case/simple_path_description/received/README.md
 # Docs for zenn.dev
 https://zenn.dev/zenn
-~~~
+`````
 
 コマンドを実行すると、 マークダウンファイルが更新されます。
 
@@ -407,7 +407,7 @@ $ npx zmce
 [zmce] 処理を終了します。
 ```
 
-~~~ md:sample_articles.md(コマンド実行後):zmce/test/description_case/simple_path_description/expected/articles/sample_article.md
+````` md:sample_articles.md(コマンド実行後):zmce/test/description_case/simple_path_description/expected/articles/sample_article.md
 ---
 title: ""
 emoji: "🙆"
@@ -428,9 +428,9 @@ console.log('Hello World!!');
 
 ## 参照用ディレクトリ(submodules) からの相対パスではZennのルートディレクトリは参照できない
 
-~~~
+`````
 
-~~~ md:sample_book/example1.md(コマンド実行後):zmce/test/description_case/simple_path_description/expected/books/sample_book/example1.md
+````` md:sample_book/example1.md(コマンド実行後):zmce/test/description_case/simple_path_description/expected/books/sample_book/example1.md
 ---
 title: ""
 ---
@@ -441,7 +441,7 @@ title: ""
 for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
 ```
 
-~~~
+`````
 :::
 
 ---
@@ -458,7 +458,7 @@ for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
 :::details 使用例を見る
 以下のような、sample_article.md ファイルを作成します。
 
-~~~ md:sample_article.md(コマンド実行前):zmce/test/description_case/abs_path_description/received/articles/sample_article.md
+````` md:sample_article.md(コマンド実行前):zmce/test/description_case/abs_path_description/received/articles/sample_article.md
 # Sample Articles(バージョン情報の埋め込み)
 
 ``` txt:/proc/version:/proc/version
@@ -466,7 +466,7 @@ for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
 
 ``` txt:/etc/os-release:/etc/os-release
 ```
-~~~
+`````
 
 筆者のZennの執筆環境で実行すると、以下のように更新されます。
 
@@ -477,7 +477,7 @@ $ npx zmce
 [zmce] 処理を終了します。
 ```
 
-~~~ md:sample_article.md(コマンド実行後):zmce/test/description_case/abs_path_description/expected/articles/sample_article.md
+````` md:sample_article.md(コマンド実行後):zmce/test/description_case/abs_path_description/expected/articles/sample_article.md
 # Sample Articles(バージョン情報の埋め込み)
 
 ``` txt:/proc/version:/proc/version
@@ -497,7 +497,7 @@ SUPPORT_URL="https://www.debian.org/support"
 BUG_REPORT_URL="https://bugs.debian.org/"
 
 ```
-~~~
+`````
 :::
 
 ---
@@ -506,13 +506,14 @@ BUG_REPORT_URL="https://bugs.debian.org/"
 
 Zennのルートディレクトリに **zmce.config.yaml** を配置することで、
 **`npx zmce`コマンドの挙動を変更** できます。
+(zmce.config.yamlが存在しない場合、デフォルトの挙動となります。カスタマイズが必要な場合、zmce.config.yamlを手動で作成してください。)
 以下の、2点について、 **全体(デフォルト) と、記事/本毎** の挙動を設定できます。
 
  1. **参照用ディレクトリ名** (キー: `relativeRoot`, デフォルト: `submodules`)
  2. **置換対象コードブロック区切り文字列** (キー: `fenceStr`, デフォルト: ` ``` `)
 
 コンフィグファイルのフォーマットは以下の通りです。
-各キーは省略可能(省略時はデフォルトを利用)です。
+**各キーは省略可能** です。(省略時はデフォルトを利用します。)
 
 :::message
 記事/本 毎に設定を上書きできますが、チャプター毎の設定はできません。
@@ -550,6 +551,234 @@ books: # 本毎の設定(上書き)
 参照用ディレクトリが **Zennのルートディレクトリ** になります。
 :::
 
+:::details 使用例を見る
+以下のような構成で 記事/本 を作成します。
+
+``` console:フォルダ構成
+|--zmce.config.yaml
+|--articles
+|  |--sample_article.md
+|  |--fizzbuzz_article.md
+|--books
+|  |--sample_book
+|  |  |--config.yaml
+|  |  |--example1.md
+|  |  |--example2.md
+|--ref
+|  |--article_memo.txt
+|  |--sample
+|  |  |--helloWorld.js
+|  |--fizzbuzz
+|  |  |--fizzbuzz.js
+|--README.md
+```
+
+````` yaml:zmce.config.yaml:zmce/test/description_case/config_relative_root/received/zmce.config.yaml
+relativeRoot: "" # Zennのルートディレクトリをデフォルトに
+articles:
+    # 個別に設定を上書き
+    sample_article:
+      relativeRoot: "ref"
+    fizzbuzz_article:
+      relativeRoot: "ref/fizzbuzz"
+# デフォルトの設定を使う場合は省略可能
+#books:
+#    sample_book:
+#        relativeRoot: ""
+
+`````
+
+````` md:sample_article.md(コマンド実行前):zmce/test/description_case/config_relative_root/received/articles/sample_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# SAMPLE
+
+``` txt:article_memo.txt:article_memo.txt
+```
+
+``` js:helloWorld.js:sample/helloWorld.js
+```
+
+``` md:README.md:../README.md
+```
+
+`````
+
+````` md:sample_article.md(コマンド実行前):zmce/test/description_case/config_relative_root/received/articles/fizzbuzz_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# fizzbuzz
+
+``` js:fizzbuzz.js:fizzbuzz.js
+```
+
+`````
+
+````` yaml:config.yaml:zmce/test/description_case/config_relative_root/received/books/sample_book/config.yaml
+title: ""
+summary: ""
+topics: []
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - example1
+  - example2
+
+`````
+
+````` md:example1.md(コマンド実行前):zmce/test/description_case/config_relative_root/received/books/sample_book/example1.md
+---
+title: ""
+---
+
+# fizzbuzz
+
+``` js:fizzbuzz.js:ref/fizzbuzz/fizzbuzz.js
+```
+
+`````
+
+````` md:example2.md(コマンド実行前):zmce/test/description_case/config_relative_root/received/books/sample_book/example2.md
+---
+title: ""
+---
+
+# embed config.yaml
+
+``` yaml:config.yaml:books/sample_book/config.yaml
+```
+
+``` md:README.md:README.md
+```
+
+`````
+
+````` txt:article_memo.txt:zmce/test/description_case/config_relative_root/received/ref/article_memo.txt
+記事メモ
+`````
+
+````` js:helloWorld.js:zmce/test/description_case/config_relative_root/received/ref/sample/helloWorld.js
+console.log('Hello World!!');
+`````
+
+````` js:fizzbuzz.js:zmce/test/description_case/config_relative_root/received/ref/fizzbuzz/fizzbuzz.js
+for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
+`````
+
+````` md:README.md:zmce/test/description_case/config_relative_root/received/README.md
+# Docs for zenn.dev
+https://zenn.dev/zenn
+`````
+
+コマンドを実行すると、 マークダウンファイルが更新されます。
+
+``` shell:コマンド実行
+$ npx zmce
+[zmce] 処理を開始します。
+[articles/fizzbuzz_article.md] コードブロックを修正しました。
+[articles/sample_article.md] コードブロックを修正しました。
+[books/sample_book/example1.md] コードブロックを修正しました。
+[books/sample_book/example2.md] コードブロックを修正しました。
+[zmce] 処理を終了します。
+```
+
+````` md:sample_article.md(コマンド実行後):zmce/test/description_case/config_relative_root/expected/articles/sample_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# SAMPLE
+
+``` txt:article_memo.txt:article_memo.txt
+記事メモ
+```
+
+``` js:helloWorld.js:sample/helloWorld.js
+console.log('Hello World!!');
+```
+
+``` md:README.md:../README.md
+# Docs for zenn.dev
+https://zenn.dev/zenn
+```
+
+`````
+
+````` md:fizzbuzz_article.md(コマンド実行後):zmce/test/description_case/config_relative_root/expected/articles/fizzbuzz_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# fizzbuzz
+
+``` js:fizzbuzz.js:fizzbuzz.js
+for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
+```
+
+`````
+
+````` md:example1.md(コマンド実行後):zmce/test/description_case/config_relative_root/expected/books/sample_book/example1.md
+---
+title: ""
+---
+
+# fizzbuzz
+
+``` js:fizzbuzz.js:ref/fizzbuzz/fizzbuzz.js
+for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
+```
+
+`````
+
+````` md:example2.md(コマンド実行後):zmce/test/description_case/config_relative_root/expected/books/sample_book/example2.md
+---
+title: ""
+---
+
+# embed config.yaml
+
+``` yaml:config.yaml:books/sample_book/config.yaml
+title: ""
+summary: ""
+topics: []
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - example1
+  - example2
+
+```
+
+``` md:README.md:README.md
+# Docs for zenn.dev
+https://zenn.dev/zenn
+```
+
+`````
+:::
+
 ---
 
 ### ２． 置換対象コードブロック区切り文字列のカスタマイズ
@@ -563,10 +792,213 @@ Zennのコードブロックは、` ``` `のみではなく、**`~~~` のよう�
 デフォルトでは、**行の先頭からバッククォート3つ以上の文字列** を含むファイルは、参照先として使用できません。　 (警告メッセージが表示されます。)
 **コードブロックを含むマークダウンを置換したい場合** は、置換対象コードブロック区切り文字列を `~~~` や、` ```` ` に変更してください。
 
+:::details 使用例を見る
+以下のような構成で 記事/本 を作成します。
+`README.md` を、`sample_article.md` が参照し、
+更に `sample_artcle.md` を `sample_book/example1.md` が参照します。
+
+``` console:フォルダ構成
+|--zmce.config.yaml
+|--articles
+|  |--sample_article.md
+|--books
+|  |--sample_book
+|  |  |--config.yaml
+|  |  |--example1.md
+|  |  |--example2.md
+|--README.md
+
+````` yaml:zmce.config.yaml:zmce/test/description_case/config_fence_str_first/received/zmce.config.yaml
+relativeRoot: ""
+fenceStr: "~~~"
+# デフォルトの設定を使う場合は省略可能
+#articles:
+#    sample_article:
+#      fenceStr: "~~~"
+books:
+    # 個別に設定を上書き
+    sample_book:
+        fenceStr: "````"
+
+`````
+
+````` md:sample_article.md(コマンド実行前):zmce/test/description_case/config_fence_str_first/received/articles/sample_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# SAMPLE
+
+~~~ md:README.md:README.md
+~~~
+
+`````
+
+````` yaml:config.yaml:zmce/test/description_case/config_fence_str_first/received/books/sample_book/config.yaml
+title: ""
+summary: ""
+topics: []
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - example1
+  - example2
+
+`````
+
+````` md:example1.md(コマンド実行前):zmce/test/description_case/config_fence_str_first/received/books/sample_book/example1.md
+---
+title: ""
+---
+
+# ref sample article
+
+```` md:sample_article.md:articles/sample_article.md
+````
+
+`````
+
+````` md:example2.md(コマンド実行前):zmce/test/description_case/config_fence_str_first/received/books/sample_book/example2.md
+---
+title: ""
+---
+
+# embed config.yaml
+
+```` yaml:config.yaml:books/sample_book/config.yaml
+````
+
+```` md:README.md:README.md
+````
+
+`````
+
+````` md:README.md:zmce/test/description_case/config_fence_str_first/received/README.md
+# Docs for zenn.dev
+https://zenn.dev/zenn
+
+# CLI install
+
+```
+$ npm init --yes # プロジェクトをデフォルト設定で初期化
+$ npm install zenn-cli # zenn-cliを導入
+```
+`````
+
+コマンドを実行すると、 マークダウンファイルが更新されます。
+
+``` shell:コマンド実行
+$ npx zmce
+[zmce] 処理を開始します。
+[articles/sample_article.md] コードブロックを修正しました。
+[books/sample_book/example1.md] コードブロックを修正しました。
+[books/sample_book/example2.md] コードブロックを修正しました。
+[zmce] 処理を終了します。
+```
+
+````` md:sample_article.md(コマンド実行後):zmce/test/description_case/config_fence_str_first/expected/articles/sample_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# SAMPLE
+
+~~~ md:README.md:README.md
+# Docs for zenn.dev
+https://zenn.dev/zenn
+
+# CLI install
+
+```
+$ npm init --yes # プロジェクトをデフォルト設定で初期化
+$ npm install zenn-cli # zenn-cliを導入
+```
+~~~
+
+`````
+
+````` md:example1.md(コマンド実行後):zmce/test/description_case/config_fence_str_second/expected/books/sample_book/example1.md
+---
+title: ""
+---
+
+# ref sample article
+
+```` md:sample_article.md:articles/sample_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# SAMPLE
+
+~~~ md:README.md:README.md
+# Docs for zenn.dev
+https://zenn.dev/zenn
+
+# CLI install
+
+```
+$ npm init --yes # プロジェクトをデフォルト設定で初期化
+$ npm install zenn-cli # zenn-cliを導入
+```
+~~~
+
+````
+
+`````
+
+````` md:example2.md(コマンド実行後):zmce/test/description_case/config_fence_str_first/expected/books/sample_book/example2.md
+---
+title: ""
+---
+
+# embed config.yaml
+
+```` yaml:config.yaml:books/sample_book/config.yaml
+title: ""
+summary: ""
+topics: []
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - example1
+  - example2
+
+````
+
+```` md:README.md:README.md
+# Docs for zenn.dev
+https://zenn.dev/zenn
+
+# CLI install
+
+```
+$ npm init --yes # プロジェクトをデフォルト設定で初期化
+$ npm install zenn-cli # zenn-cliを導入
+```
+````
+
+`````
+:::
+
 # zmceのソースコード
 
 :::details zmceのソースコードを見る
-~~~ ts:zmce.ts:zmce/src/zmce.ts
+````` ts:zmce.ts:zmce/src/zmce.ts
 // ref: https://github.com/zenn-dev/zenn-editor/blob/master/packages/zenn-cli/utils/api/
 import fs from "fs-extra";
 import { basename, dirname, join } from "path";
@@ -929,7 +1361,7 @@ function consoleInfoSimple(msg: string): void {
   console.info(msg);
 }
 
-~~~
+`````
 :::
 
 # その他
