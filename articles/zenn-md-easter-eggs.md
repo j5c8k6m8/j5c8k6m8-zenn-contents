@@ -152,6 +152,15 @@ https://fonts.google.com/specimen/Inter?query=Inter&preview.text=%3C----&preview
 
 https://github.com/zenn-dev/zenn-roadmap/issues/87
 
+ただし、 **evil(邪悪)な方法** であれあば、**数式(KaTeX)** による記法をすることで、
+文字色を（フォントごと）変えることは可能。
+
+```
+文字を $\textcolor{red}{赤く}$ する
+```
+
+文字を $\textcolor{red}{赤く}$ する
+
 ## Markdownの原文を見る
 
 現在はサポートされていないはず。(公開設定されたGitHub連携していれば確認可能)
