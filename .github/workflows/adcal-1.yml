@@ -3,15 +3,17 @@ on:
   schedule:
     # 12/1 の 11:00 (JST) に処理を実行する。(UTC の 02:00 は JST だと 11:00)
     # - cron: '0 2 1 12 *'
-    - cron: '40 17 6 11 *'
+    - cron: '58 17 6 11 *'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: merge adcal branch
-        run: echo "1" && git merge -m "Merge branch 'adcal-1' into zenn" adcal-1 && echo "2" 
-      - name: push default branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: echo "3" && git push origin zenn && echo "4"
+      - name: echo
+        run: echo hello
+      #- name: merge adcal branch
+      #  run: echo "1" && git merge -m "Merge branch 'adcal-1' into zenn" adcal-1 && echo "2" 
+      #- name: push default branch
+      #  env:
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #  run: echo "3" && git push origin zenn && echo "4"
