@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: merge adcal branch
-        run: git merge -m "Merge branch 'adcal-1' into zenn" adcal-1
+        run: echo "1" && git merge -m "Merge branch 'adcal-1' into zenn" adcal-1 && echo "2" 
       - name: push default branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: git push origin zenn
+        run: echo "3" && git push origin zenn && echo "4"
