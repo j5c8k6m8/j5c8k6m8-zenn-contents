@@ -1,0 +1,17 @@
+name: adcal-1
+on:
+  schedule:
+    # 12/1 の 11:00 (JST) に処理を実行する。(UTC の 02:00 は JST だと 11:00)
+    # - cron: '0 2 1 12 *'
+    - cron: '0 17 6 11 *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: merge adcal branch
+        run: git merge adcal-1
+      - name: push default branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git push origin zenn
