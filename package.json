@@ -18,7 +18,13 @@
   "homepage": "https://github.com/j5c8k6m8/j5c8k6m8-zenn-contents#readme",
   "description": "",
   "dependencies": {
-    "zenn-cli": "^0.1.48",
-    "zmce": "0.0.2"
+    "zenn-cli": "^0.1.53",
+    "zmce": "^0.1.0"
+  },
+  "devDependencies": {
+    "textlint": "^11.7.6",
+    "textlint-rule-preset-ja-spacing": "^2.0.2",
+    "textlint-rule-preset-ja-technical-writing": "^4.0.1",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0"
   }
 }
