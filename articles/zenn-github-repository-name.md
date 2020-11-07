@@ -54,7 +54,7 @@ GitHub連携は公開リポジトリではなく、プライベートリポジ�
 
 `https://zenn.dev/zenn/articles/zenn-cli-guide in:readme`
 
-![](https://github.com/j5c8k6m8/j5c8k6m8-zenn-contents/raw/master/images/zenn-github-repository-name___img-github-search.png)
+![](https://github.com/j5c8k6m8/j5c8k6m8-zenn-contents/raw/zenn/images/zenn-github-repository-name___img-github-search.png)
 
 9/20日時点で、22件のリポジトリがHITしました。
 以下、リポジトリ名の多い順のリストです。
