@@ -2,7 +2,8 @@ name: adcal-2
 on:
   schedule:
     # 12/2 の 7:00 (JST) に処理を実行する。(UTC の 22:00 は JST だと翌日の 7:00)
-    - cron: '0 22 1 12 *'
+    # - cron: '0 22 1 12 *'
+    - cron: '30 8 7 11 *'
 jobs:
   build:
     runs-on: ubuntu-latest
