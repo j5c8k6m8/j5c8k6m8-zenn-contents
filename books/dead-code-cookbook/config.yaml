@@ -1,0 +1,8 @@
+title: "DEAD CODE COOKBOOK"
+summary: "☠️デッドコードクックブック☠️ ~デッドコードの作り方と復活の呪文~"
+topics: ["deadCode", "unreachableCode"]
+published: false
+price: 0
+chapters:
+  - introduction
+  - if_statement_use_literal
