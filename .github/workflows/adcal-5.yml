@@ -1,8 +1,8 @@
-name: adcal-1
+name: adcal-5
 on:
   schedule:
-    # 12/1 の 7:00 (JST) に処理を実行する。(UTC の 22:00 は JST だと翌日の 7:00)
-    - cron: '0 22 30 11 *'
+    # 12/5 の 7:00 (JST) に処理を実行する。(UTC の 22:00 は JST だと翌日の 7:00)
+    - cron: '0 22 4 12 *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,7 +16,7 @@ jobs:
         run: |
           git config user.name j5c8k6m8
           git config user.email j5c8k6m8@gmail.com
-          git merge -m "Merge branch for Advent calendar" origin/adcal-1
+          git merge -m "Merge branch for Advent calendar" origin/adcal-5
       - name: push default branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
