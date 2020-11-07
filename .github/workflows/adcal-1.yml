@@ -3,12 +3,14 @@ on:
   schedule:
     # 12/1 の 11:00 (JST) に処理を実行する。(UTC の 02:00 は JST だと 11:00)
     # - cron: '0 2 1 12 *'
-    - cron: '50 3 7 11 *'
+    - cron: '40 4 7 11 *'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: merge adcal branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
