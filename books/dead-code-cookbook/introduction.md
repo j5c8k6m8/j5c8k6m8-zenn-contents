@@ -39,7 +39,7 @@ T.B.D
 
 未使用のデータ項目に対するデッドコードは対象外
 
-I'm already dead!!
+I am already dead!!
 
 ## 対象言語と環境
 
@@ -57,7 +57,7 @@ I'm already dead!!
 環境構築は別章とする。
 
 ``` console
-docker run --rm -v $ZENN_HOME/books/dead-code-cookbook/src/ruby:/app/ruby ruby:2.7.2-buster ruby /app/ruby/HelloWorld.rb
+docker run --rm -v $ZENN_HOME/books/dead-code-cookbook/src/ruby:/app/ruby ruby:2.7.2-buster ruby /app/ruby/hello_world.rb
 ```
 
 # 読者へのおねがい
