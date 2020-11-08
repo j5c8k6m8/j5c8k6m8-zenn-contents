@@ -41,16 +41,24 @@ T.B.D
 
 I'm already dead!!
 
-対象言語
+## 対象言語と環境
 
-- C言語
-- Python
-- JavaScript
-- Ruby
-- Go
-- Java
-- TypeScript
-- Rust
+|プログラミング言語|Dockerタグ|
+|:--|:--|
+|C言語||
+|Python||
+|JavaScript||
+|Ruby|ruby:2.7.2-buster|
+|Go||
+|Java||
+|TypeScript||
+|Rust||
+
+環境構築は別章とする。
+
+``` console
+docker run --rm -v $ZENN_HOME/books/dead-code-cookbook/src/ruby:/app/ruby ruby:2.7.2-buster ruby /app/ruby/HelloWorld.rb
+```
 
 # 読者へのおねがい
 
@@ -84,7 +92,7 @@ I'm already dead!!
 16.文字列の活用
 17.マクロの利用
 18.組み込み例外の利用
-19.evalの利用
+19.ソースコードの取得とevalの利用
 20.catchの利用
 21.gotoの利用
 22.never型の利用？
