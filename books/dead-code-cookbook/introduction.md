@@ -53,17 +53,21 @@ I am already dead!!
 |:--|:--|
 |C言語||
 |Python||
-|JavaScript||
+|JavaScript(Node.js)||
 |Ruby|ruby:2.7.2-buster|
-|Go||
-|Java||
+|Go|1.15.4-buster|
+|Java|openjdk:15.0.1|
 |TypeScript||
 |Rust||
 
 環境構築は別章とする。
 
 ``` console
-docker run --rm -v $ZENN_HOME/books/dead-code-cookbook/src/ruby:/app/ruby ruby:2.7.2-buster ruby /app/ruby/hello_world.rb
+docker run --rm -v $ZENN_HOME/books/dead-code-cookbook/src/ruby:/app/ruby ruby:2.7.2-buster ruby /app/ruby/hello_world.rb && echo success
+```
+
+``` console
+docker run --rm -v $ZENN_HOME/books/dead-code-cookbook/src/golang:/app/golang golang:1.15.4-buster go run /app/golang/hello_world.go && echo success
 ```
 
 # 読者へのおねがい
@@ -81,7 +85,8 @@ docker run --rm -v $ZENN_HOME/books/dead-code-cookbook/src/ruby:/app/ruby ruby:2
 # レシピ(目次)
 
 1.リテラルを利用した条件式
-2.定数/グローバルプロパティを利用した条件式
+2.ローカル変数を利用した条件式
+1.定数を利用した条件式
 3.return後のコード
 4.throw後のコード
 5.break/continue後のコード
