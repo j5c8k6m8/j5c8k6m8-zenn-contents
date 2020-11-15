@@ -5,7 +5,10 @@ published: false
 price: 0
 chapters:
   - introduction
+  - index
+  - after_return
+  - after_exception
   - if_statement_use_literal
   - if_statement_use_variable
   - if_statement_use_const
-  - after_return
+  - environment
