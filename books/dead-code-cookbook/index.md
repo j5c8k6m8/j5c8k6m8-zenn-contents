@@ -33,6 +33,7 @@ title: "目次"
 1. 三項演算子
 1. プロミス？
 1. exit。大域脱出？
+1. 実行時エラー？の後
 
 
 void hoge(double a) {
@@ -46,3 +47,5 @@ void (Double.isInfinited(d1) && Double.isinfinite(d2) && d1 != d2)
 ↑プラスマイナス無限大
 
 コンストラクタ、ですトラクタ
+
+実行時エラー
