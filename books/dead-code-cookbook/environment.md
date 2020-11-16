@@ -17,6 +17,10 @@ title: "付録A. 対象言語と環境"
 
 **バージョンの違いによる挙動の違いまでは考慮せず、執筆時点での最新のバージョン** を用いる。例えば、本書でのpythonは、python3を対象として、python2は対象外とする。
 
+::: message
+本付録のコマンド内では本書のリポジトリのパスを `DCC_HOME` の環境変数として記載する。
+**本コマンドをコピペして使用する場合は、 `DCC_HOME` に本書のリポジトリのパスを設定** すること。
+:::
 
 # プログラミング言語一覧
 
@@ -31,6 +35,21 @@ title: "付録A. 対象言語と環境"
 # プログラミング言語毎詳細
 
 ## Python
+
+|||
+|:--|:--|
+|バージョン|3.9.0|
+|ベースイメージ|python:3.9.0-buster|
+|flake8|3.8.4|
+
+``` sh
+# Docker build
+docker build -t dcc-python $DCC_HOME/projects/python/
+# コード実行
+docker run --rm -v $DCC_HOME/projects/python:/app/python dcc-python python /app/python/src/after_return.py && echo success
+# flake8実行
+docker run --rm -v $DCC_HOME/projects/python:/app/python dcc-python flake8 /app/python/src/after_return.py && echo success
+```
 
 ## Go
 
