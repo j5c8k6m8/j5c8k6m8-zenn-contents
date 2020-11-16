@@ -6,7 +6,7 @@ title: "目次"
 
 # レシピリスト(目次)
 
-1. return後のコード
+1. `return後のコード`
 1. throw後のコード
 1. リテラルを利用した条件分岐
 1. 定数を利用した条件分岐
@@ -44,3 +44,5 @@ void hoge(double a) {
 
 void (Double.isInfinited(d1) && Double.isinfinite(d2) && d1 != d2)
 ↑プラスマイナス無限大
+
+コンストラクタ、ですトラクタ
