@@ -38,9 +38,9 @@ title: "付録A. 対象言語と環境"
 
 |||
 |:--|:--|
-|バージョン|3.9.0|
+|バージョン|Python 3.9.0|
 |ベースイメージ|python:3.9.0-buster|
-|flake8|3.8.4|
+|flake8|3.8.4 (mccabe: 0.6.1, pycodestyle: 2.6.0, pyflakes: 2.2.0)|
 
 ``` sh
 # Docker build
@@ -48,7 +48,7 @@ docker build -t dcc-python $DCC_HOME/projects/python/
 # コード実行
 docker run --rm -v $DCC_HOME/projects/python:/app/python dcc-python python /app/python/src/after_return.py && echo success
 # flake8実行
-docker run --rm -v $DCC_HOME/projects/python:/app/python dcc-python flake8 /app/python/src/after_return.py && echo success
+docker run --rm -v $DCC_HOME/projects/python:/app/python dcc-python flake8 /app/python/src/after_return.py
 ```
 
 ## Go
@@ -73,8 +73,17 @@ docker run --rm -v $ZENN_HOME/books/dead-code-cookbook/src/golang:/app/golang go
 
 |||
 |:--|:--|
-|DOCKERイメージ|ruby:2.7.2-buster|
+|バージョン|ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-linux]|
+|ベースイメージ|ruby:2.7.2-buster|
+|rubocop|1.3.1|
 
-``` console
-docker run --rm -v $ZENN_HOME/books/dead-code-cookbook/src/ruby:/app/ruby ruby:2.7.2-buster ruby /app/ruby/hello_world.rb && echo success
+```  sh
+# Docker build
+docker build -t dcc-ruby $DCC_HOME/projects/ruby/
+# コード実行
+docker run --rm -v $DCC_HOME/projects/ruby:/app/ruby dcc-ruby ruby /app/ruby/after_return.rb && echo success
+# コード実行(コンパイル(Syntaxチェック&警告確認)
+docker run --rm -v $DCC_HOME/projects/ruby:/app/ruby dcc-ruby ruby -wc /app/ruby/after_return.rb
+# rubocop
+docker run --rm -v $DCC_HOME/projects/ruby:/app/ruby dcc-ruby rubocop /app/ruby/after_return.rb
 ```

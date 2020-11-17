@@ -1,3 +1,3 @@
 ---
-title: "throw後のコード"
+title: "🧪throw後のコード"
 ---

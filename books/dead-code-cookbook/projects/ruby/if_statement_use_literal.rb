@@ -1,3 +1,3 @@
 if false
-    puts('I am already dead!!')
+    puts('Am I dead?')
 end
