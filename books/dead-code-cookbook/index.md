@@ -60,3 +60,7 @@ void (Double.isInfinited(d1) && Double.isinfinite(d2) && d1 != d2)
 コンストラクタ、ですトラクタ
 
 実行時エラー
+
+
+あとがき。
+デッドコードを作れないプログラミング言語
