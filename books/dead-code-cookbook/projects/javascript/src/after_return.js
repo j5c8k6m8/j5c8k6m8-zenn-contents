@@ -1,0 +1,2 @@
+return
+console.log("Am I dead?")

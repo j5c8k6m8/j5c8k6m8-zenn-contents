@@ -67,8 +67,6 @@ docker run --rm -v $ZENN_HOME/books/dead-code-cookbook/src/golang:/app/golang go
 |:--|:--|
 |DOCKERイメージ|openjdk:15.0.1|
 
-### ビルドと実行
-
 ## Ruby
 
 |||
@@ -86,4 +84,21 @@ docker run --rm -v $DCC_HOME/projects/ruby:/app/ruby dcc-ruby ruby /app/ruby/aft
 docker run --rm -v $DCC_HOME/projects/ruby:/app/ruby dcc-ruby ruby -wc /app/ruby/after_return.rb
 # rubocop
 docker run --rm -v $DCC_HOME/projects/ruby:/app/ruby dcc-ruby rubocop /app/ruby/after_return.rb
+```
+
+## JavaScript
+
+|||
+|:--|:--|
+|バージョン|ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-linux]|
+|ベースイメージ|node:15.2.1-buster|
+|rubocop|1.3.1|
+
+```  sh
+# Docker build
+docker build -t dcc-javascript $DCC_HOME/projects/javascript/
+# コード実行
+docker run --rm -v $DCC_HOME/projects/javascript:/app/javascript dcc-javascript node /app/javascript/src/after_return.js && echo success
+# eslint
+docker run --rm -v $DCC_HOME/projects/javascript:/app/javascript dcc-javascript eslint /app/javascript/src/after_return.js
 ```
