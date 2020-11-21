@@ -6,9 +6,28 @@ price: 0
 chapters:
   - introduction
   - index
-  - after_return
-  - after_exception
-  - if_statement_use_literal
-  - if_statement_use_variable
-  - if_statement_use_const
+  - p_after
+  - r_after_return
+  - r_after_throw
+  - r_after_loop_break
+  - r_after_loop_continue
+  - r_after_switch_break
+  - r_after_goto
+  - r_after_exit
+  - r_after_func_throw
+  - r_after_func_not_return
+  - r_after_runtime_error
+  - r_after_generator_yield
+  - r_after_break_yield
+  - p_simple_if
+  - r_simple_if_literal
+  - r_simple_if_const
+  - r_simple_if_variable
+  - r_simple_if_operation
+  - a_after_stop_delete
+  - a_after_stop_move
+  - a_after_fix_runtime_error
+  - a_fix_call
+  - z_goto
+  - z_hoisting
   - environment
