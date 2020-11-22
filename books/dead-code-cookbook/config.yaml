@@ -15,10 +15,11 @@ chapters:
   - r_after_goto
   - r_after_exit
   - r_after_func_throw
-  - r_after_func_not_return
-  - r_after_runtime_error
-  - r_after_generator_yield
   - r_after_break_yield
+  - r_after_runtime_error
+  - p_forever
+  - r_forever_loop
+  - r_forever_func
   - p_simple_if
   - r_simple_if_literal
   - r_simple_if_const
@@ -31,10 +32,34 @@ chapters:
   - r_parallel_switch_default
   - p_nest_if
   - r_nest_if
+  - p_cond_other
+  - r_cond_other_for
+  - r_cond_other_while
+  - r_cond_other_ternary
+  - r_cond_other_short_circuit 
+  - r_cond_other_catch
+  - r_cond_other_iterator
+  - r_cond_other_null
+  - p_func
+  - r_func_empty
+  - r_func_arg
+  - p_def
+  - r_def_func
+  - r_def_method
+  - r_def_override
+  - p_other
+  - r_other_generator_yield
   - a_after_stop_delete
   - a_after_stop_move
   - a_after_fix_runtime_error
   - a_fix_call
   - z_goto
   - z_hoisting
+  - t_forever_func
+  - t_cond_set
+  - t_cond_comp
+  - t_cond_num
+  - t_cond_str
+  - t_cond_regex
+  - t_empty_set
   - environment
