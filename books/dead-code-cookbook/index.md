@@ -13,7 +13,9 @@ title: "目次"
     1. [`🧪goto後のコード`](./r_after_goto)
     1. [`🧪exit後のコード`](./r_after_exit)
     1. [`🧪常にthrowする関数呼出後のコード`](./r_after_func_throw)
-    1. [`🧪実行時エラーとなる処理後のコード`](./r_after_runtime_error)
+    1. [`🧪常に実行時エラーとなる処理後のコード`](./r_after_runtime_error)
+1. [`🔖後続の処理が行われないパターン`](./)
+
     1. [`🧪無限ループ後のコード`](./)
 
     1. [`🧪returnしない関数呼出後のコード`](./r_after_func_not_return)
