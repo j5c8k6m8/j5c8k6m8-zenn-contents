@@ -24,6 +24,13 @@ chapters:
   - r_simple_if_const
   - r_simple_if_variable
   - r_simple_if_operation
+  - p_parallel_if
+  - r_parallel_elseif
+  - r_parallel_switch_case
+  - r_parallel_else
+  - r_parallel_switch_default
+  - p_nest_if
+  - r_nest_if
   - a_after_stop_delete
   - a_after_stop_move
   - a_after_fix_runtime_error

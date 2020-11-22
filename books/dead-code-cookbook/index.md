@@ -22,13 +22,13 @@ title: "目次"
     1. [`🧪単独で常にfalse(定数)となる条件のif文`](./r_simple_if_const)
     1. [`🧪単独で常にfalse(変数)となる条件のif文`](./r_simple_if_variable)
     1. [`🧪単独で常にfalse(演算結果)となる条件のif文`](./r_simple_if_operation)
-1. `🔖並列な複数の条件を利用するパターン`
-    1. `🧪部分集合条件のelseif`
-    1. `🧪部分集合条件のcase(switch)`
-    1. `🧪空集合条件のelse`
-    1. `🧪空集合条件のdefalt(switch)`
-1. `🔖ネストした複数の条件を利用するパターン`
-    1. `🧪部分集合条件のif(ネスト)`
+1. [`🔖並列な複数の条件を利用するパターン`](./p_parallel_if)
+    1. [`🧪部分集合条件のelseif`](./r_parallel_elseif)
+    1. [`🧪部分集合条件のcase(switch)`](./r_parallel_switch_case)
+    1. [`🧪空集合条件のelse`](./r_parallel_else)
+    1. [`🧪空集合条件のdefault(switch)`](./r_parallel_switch_default)
+1. [`🔖ネストした複数の条件を利用するパターン`](./p_nest_if)
+    1. [`🧪部分集合条件のif(ネスト)`](./r_nest_if)
 1. `🔖if以外の条件を利用するパターン`
     1. `🧪for継続条件が空集合条件`
     1. `🧪while継続条件が空集合条件`
