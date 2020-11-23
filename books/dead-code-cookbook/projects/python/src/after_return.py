@@ -1,6 +1,6 @@
-def main():
+def f():
     return
     print("Am I dead?")
 
 
-main()
+f()
