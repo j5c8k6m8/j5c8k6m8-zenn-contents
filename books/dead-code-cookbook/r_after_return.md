@@ -13,8 +13,6 @@ return
 puts 'Am I dead?'
 ```
 
-`🧪return後のコード` は、デッドコードレシピとして最も代表的なパターンだ。プログラミング言語やツールで最も検知されるパターンと言っても過言ではないだろう。
-
 `return` は、多くのプログラミング言語で、処理を呼出元に戻すために使われる。関数において使われることが多いが、スクリプト言語ではトップレベルのスクリプト環境でも実行できるものもある。例えば、pythonはモジュールで `return` を使用できないため、トップレベルのスクリプト環境では使えないが、rubyは使える。
 
 [`🔖中断を利用するパターン`](./p_after) である。`return` 後に書かれているコードは、基本的にはデッドコードとなる。
@@ -40,6 +38,8 @@ puts 'Am I dead?'
 
 ## Python
 
+トップレベル(モジュール) では `return` は使えないことに注意
+
 ``` python:after_return.rb:./projects/python/src/after_return.py
 def f():
     return
@@ -48,6 +48,12 @@ def f():
 
 f()
 
+```
+
+``` console
+$ python /app/python/src/after_return.py
+$ flake8 /app/python/src/after_return.py
+$ 
 ```
 
 ## Ruby

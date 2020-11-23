@@ -45,10 +45,15 @@ title: "🧰対象言語と環境"
 ``` sh
 # Docker build
 docker build -t dcc-python $DCC_HOME/projects/python/
-# コード実行
-docker run --rm -v $DCC_HOME/projects/python:/app/python dcc-python python /app/python/src/after_return.py && echo success
+# コンテナ起動
+docker run -it --rm -v $DCC_HOME/projects/python:/app/python dcc-python bash
+```
+
+``` sh:コンテナ内で実行
+# python実行
+python /app/python/src/after_return.py
 # flake8実行
-docker run --rm -v $DCC_HOME/projects/python:/app/python dcc-python flake8 /app/python/src/after_return.py
+flake8 /app/python/src/after_return.py
 ```
 
 ## Go
@@ -97,7 +102,7 @@ docker run --rm -v $DCC_HOME/projects/ruby:/app/ruby dcc-ruby rubocop /app/ruby/
 ```  sh
 # Docker build
 docker build -t dcc-javascript $DCC_HOME/projects/javascript/
-# コード実行
+# コンテナ起動
 docker run --rm -v $DCC_HOME/projects/javascript:/app/javascript dcc-javascript node /app/javascript/src/after_return.js && echo success
 # eslint
 docker run --rm -v $DCC_HOME/projects/javascript:/app/javascript dcc-javascript eslint /app/javascript/src/after_return.js
