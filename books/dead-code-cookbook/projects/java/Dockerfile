@@ -1,2 +1,2 @@
-FROM golang:1.15.4-buster
+FROM openjdk:15.0.1
 RUN /bin/bash -c "echo \"PS1='\$ '\" >> /root/.bashrc "

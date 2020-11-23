@@ -10,7 +10,6 @@ chapters:
   - r_after_return
   - r_after_throw
   - r_after_loop_break
-  - r_after_loop_continue
   - r_after_switch_break
   - r_after_goto
   - r_after_exit
