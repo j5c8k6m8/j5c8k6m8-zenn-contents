@@ -9,8 +9,7 @@ chapters:
   - p_after
   - r_after_return
   - r_after_throw
-  - r_after_loop_break
-  - r_after_switch_break
+  - r_after_break
   - r_after_goto
   - r_after_exit
   - r_after_func_throw

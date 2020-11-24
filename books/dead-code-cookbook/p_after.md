@@ -19,8 +19,7 @@ title: "🔖中断を利用するパターン"
 
 1. [`🧪return後のコード`](./r_after_return)
 1. [`🧪throw後のコード`](./r_after_throw)
-1. [`🧪break(loop)後のコード`](./r_after_loop_break)
-1. [`🧪break(switch)後のコード`](./r_after_switch_break)
+1. [`🧪break後のコード`](./r_after_break)
 1. [`🧪goto後のコード`](./r_after_goto)
 1. [`🧪exit後のコード`](./r_after_exit)
 1. [`🧪常にthrowする関数呼出後のコード`](./r_after_func_throw)
