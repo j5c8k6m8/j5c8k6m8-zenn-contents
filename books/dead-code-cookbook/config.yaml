@@ -15,6 +15,7 @@ chapters:
   - r_after_func_throw
   - r_after_break_yield
   - r_after_runtime_error
+  - r_after_assert
   - p_forever
   - r_forever_loop
   - r_forever_func
@@ -53,6 +54,7 @@ chapters:
   - a_fix_call
   - z_goto
   - z_hoisting
+  - z_compile_delete
   - t_forever_func
   - t_cond_set
   - t_cond_comp

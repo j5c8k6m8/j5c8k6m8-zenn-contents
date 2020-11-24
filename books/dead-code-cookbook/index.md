@@ -16,6 +16,7 @@ title: "📑目次"
     1. [`🧪常にthrowする関数呼出後のコード`](./r_after_func_throw)
     1. [`🧪常にbreakする高階関数呼出後のコード`](./r_after_break_yield)
     1. [`🧪常に実行時エラーとなる処理後のコード`](./r_after_runtime_error)
+    1. [`🧪常に条件がfalseとなるassert後のコード`](./r_after_assert)
 1. [`🔖終らない処理を利用するパターン`](./p_forever)
     1. [`🧪無限ループ後のコード`](./r_forever_loop)
     1. [`🧪終らない関数呼出後のコード`](./r_forever_func)
@@ -67,6 +68,7 @@ title: "📑目次"
 
 1. [`🧟goto文のラベルによるジャンプ`](./z_goto)
 1. [`🧟ホイスティング`](./z_hoisting)
+1. [`🧟実行時除去`](./z_compile_delete)
 
 # デッドコードツール一覧
 
