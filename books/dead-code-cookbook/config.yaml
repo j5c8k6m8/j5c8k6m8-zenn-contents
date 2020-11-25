@@ -55,6 +55,8 @@ chapters:
   - z_goto
   - z_hoisting
   - z_compile_delete
+  - z_override_def
+  - z_override_scope
   - t_forever_func
   - t_cond_set
   - t_cond_comp

@@ -69,6 +69,8 @@ title: "📑目次"
 1. [`🧟goto文のラベルによるジャンプ`](./z_goto)
 1. [`🧟ホイスティング`](./z_hoisting)
 1. [`🧟実行時除去`](./z_compile_delete)
+1. [`🧟定義の上書き`](./z_override_def)
+1. [`🧟内側のスコープによる隠蔽`](./z_override_scope)
 
 # デッドコードツール一覧
 
