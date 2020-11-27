@@ -30,7 +30,7 @@ Pythonでは `raise`、Goでは `panic`の予約後を用いる。RubyでもPyth
  - 削除対象にgoto文のラベルが記載されている。 -> [`🧟goto文のラベルによるジャンプ`](./z_goto)
  - 削除対象に代入が記載されている。  -> [`🧟ホイスティング`](./z_hoisting)
  - `throw` の定義が上書きされている ->  [`🧟定義の上書き`](./z_override_def)
- - `throw` が宣言されている -> [🧟内側のスコープによる隠蔽](./z_override_scope)
+ - `throw` が宣言されている -> [`🧟内側のスコープによる隠蔽`](./z_override_scope)
 
 
 # 言語毎
@@ -39,13 +39,13 @@ Pythonでは `raise`、Goでは `panic`の予約後を用いる。RubyでもPyth
 |:--|:--|:--|:--|
 |Python|実行可|-|-|
 |||flake8|検知不可|
-|Ruby||-|-|
-|||-w(turn warnings)||
-|||rubocop||
-|JavaScript||-|-|
-|||eslint||
-|Java||-|-|
-|Go||-|-|
+|Ruby|実行可|-|-|
+|||-w(turn warnings)|検知不可|
+|||rubocop|検知可|
+|JavaScript|実行可|-|-|
+|||eslint|検知可|
+|Java|実行不可|-|-|
+|Go|実行可|-|-|
 
 ## Python
 
@@ -61,39 +61,121 @@ except Exception:
 ```
 
 ``` console
-$ python src/after_throw.py 
+$ # コード実行
+$ python src/after_throw.py
+$ # flake8
 $ flake8 src/after_throw.py
 $ 
 ```
 
 ## Ruby
 
-``` ruby:template.rb:./projects/ruby/src/template.rb
+`false` がエイリアスとして使われる(rubocopでは警告がでる)。`throw` もあるがサンプルは記載しない。
+
+``` ruby:after_throw.rb:./projects/ruby/src/after_throw.rb
+begin
+  raise
+  puts 'Am I dead?'
+rescue RuntimeError
+end
+
 ```
 
 ``` console
+$ # コード実行
+$ ruby src/after_throw.rb
+$ # コンパイル(Syntaxチェック&警告確認)
+$ ruby -wc src/after_throw.rb 
+Syntax OK
+$ # rubocop
+$ rubocop src/after_throw.rb
+Inspecting 1 file
+W
+
+Offenses:
+
+src/after_throw.rb:3:3: W: Lint/UnreachableCode: Unreachable code detected.
+  puts 'Am I dead?'
+  ^^^^^^^^^^^^^^^^^
+src/after_throw.rb:4:1: W: Lint/SuppressedException: Do not suppress exceptions.
+rescue RuntimeError
+^^^^^^^^^^^^^^^^^^^
+
+1 file inspected, 2 offenses detected
+$ 
 ```
 
 ## JavaScript
 
-``` js:template.js:./projects/javascript/src/template.js
+``` js:after_throw.js:./projects/javascript/src/after_throw.js
+try {
+  throw 'Error';
+  console.log("Am I dead?")
+} catch (e) {
+}
+
 ```
 
 ``` console
+$ # コード実行
+$ node src/after_throw.js
+$ # eslint
+$ eslint src/after_throw.js
+
+/app/javascript/src/after_throw.js
+  3:3   error  Unreachable code       no-unreachable
+  4:13  error  Empty block statement  no-empty
+
+✖ 2 problems (2 errors, 0 warnings)
+
+$ 
 ```
 
 ## Java
 
-``` java:Template.java:./projects/java/src/main/java/Template.java
+``` java:AfterThrow.java:./projects/java/src/main/java/AfterThrow.java
+public class AfterThrow {
+    public static void main(String[] args) {
+        try {
+            throw new RuntimeException();
+            System.out.println("Am I dead?");
+        } catch (RuntimeException e) {
+        }
+    }
+}
 ```
 
 ``` console
+$ # コード実行
+$ java src/main/java/AfterThrow.java 
+src/main/java/AfterThrow.java:5: error: unreachable statement
+            System.out.println("Am I dead?");
+            ^
+1 error
+error: compilation failed
+$ java src/main/java/AfterThrow.java 
+$ 
 ```
 
 ## Go
 
-``` go:template.go:./projects/golang/src/template.go
+``` go:after_throw.go:./projects/golang/src/after_throw.go
+package main
+
+import "fmt"
+
+func main() {
+	defer func() {
+		recover()
+	}()
+	panic("Error")
+	fmt.Println("Am I dead?")
+}
+
 ```
 
 ``` console
+$ # コード実行
+$ go run src/after_throw.go
+$ 
 ```
