@@ -103,6 +103,7 @@ void (Double.isInfinited(d1) && Double.isinfinite(d2) && d1 != d2)
 ↑プラスマイナス無限大
 
 
+fallthrough
 
 静的な言語で、型指定を無視したメソッドを追加する。
 
