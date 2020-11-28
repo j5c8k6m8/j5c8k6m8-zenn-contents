@@ -40,8 +40,8 @@ while True:
 |||rubocop|検知可|
 |JavaScript||-|-|
 |||eslint||
-|Java||-|-|
-|Go||-|-|
+|Java|実行不可|-|-|
+|Go|実行可|-|-|
 
 ## Python
 
@@ -129,19 +129,77 @@ $
 
 ## Java
 
-``` java:Template.java:./projects/java/src/main/java/Template.java
+Javaでは、 `switch` 文中でも `break` が使用される。
+
+``` java:AfterBreak.java:./projects/java/src/main/java/AfterBreak.java
+public class AfterBreak {
+    public static void main(String[] args) {
+        while(true) {
+            break;
+            System.out.println("Am I dead?");
+        }
+    }
+}
 ```
 
 ``` console
+$ # コード実行
+$ java src/main/java/AfterBreak.java 
+src/main/java/AfterBreak.java:5: error: unreachable statement
+            System.out.println("Am I dead?");
+            ^
+1 error
+error: compilation failed
+$ 
 ```
+
+また、label付き `break` が使用できる。この場合 `break` の直後ではなくても、以下の様なコードはデッドコードの理由により、コンパイルに失敗する。
+
+``` java:AfterBreakLabel.java:./projects/java/src/main/java/AfterBreakLabel.java
+public class AfterBreakLabel {
+    public static void main(String[] args) {
+        l:{
+            while(true) {
+                while(true) {
+                    break l;
+                }
+                System.out.println("Am I dead?");
+            }
+        }
+    }
+}
+```
+
+``` console
+$ # コード実行
+$ java src/main/java/AfterBreakLabel.java 
+src/main/java/AfterBreakLabel.java:8: error: unreachable statement
+                System.out.println("Am I dead?");
+                ^
+1 error
+error: compilation failed
+$ 
+```
+
 
 ## Go
 
-``` go:template.go:./projects/golang/src/template.go
+``` go:after_break.go:./projects/golang/src/after_break.go
+package main
+
+import "fmt"
+
+func main() {
+	for {
+		break
+		fmt.Println("Am I dead?")
+	}
+}
+
 ```
 
 ``` console
+$ # コード実行
+$ go run src/after_break.go 
+$ 
 ```
-
-
-
