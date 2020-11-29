@@ -58,7 +58,6 @@ chapters:
   - z_override_def
   - z_override_scope
   - t_forever_func
-  - t_cond_set
   - t_cond_comp
   - t_cond_num
   - t_cond_str
