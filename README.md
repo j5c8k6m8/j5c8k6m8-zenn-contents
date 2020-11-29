@@ -44,3 +44,10 @@ docker exec -it zenn ash
 ``` shell
 docker run --name zmce --rm -v $ZENN_HOME/submodules/zmce:/app/zmce -w /app/zmce -u $(id -u $USER):$(id -g $USER) -it node bash
 ```
+
+# DEAD CODE COOKBOOK用メモ
+
+``` shell
+git subtree push --prefix=books/dead-code-cookbook dcc main
+git subtree pull --prefix=books/dead-code-cookbook dcc main
+```
