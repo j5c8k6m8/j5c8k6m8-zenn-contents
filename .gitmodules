@@ -7,3 +7,6 @@
 [submodule "submodules/zenn-editor"]
 	path = submodules/zenn-editor
 	url = https://github.com/j5c8k6m8/zenn-editor.git
+[submodule "books/dead-code-cookbook"]
+	path = books/dead-code-cookbook
+	url = https://github.com/j5c8k6m8/dead-code-cookbook.git
