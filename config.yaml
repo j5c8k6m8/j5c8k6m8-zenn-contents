@@ -141,7 +141,7 @@ summary: "☠️デッドコードクックブック☠️
 
 "
 topics: ["deadCode", "unreachableCode", "デッドコードクックブック", "デッドコードレシピ"]
-published: false
+published: true
 price: 0
 chapters:
   - introduction
