@@ -1,6 +1,3 @@
 [submodule "submodules/zmce"]
 	path = submodules/zmce
 	url = https://github.com/j5c8k6m8/zmce.git
-[submodule "submodules/markdown-it"]
-	path = submodules/markdown-it
-	url = https://github.com/markdown-it/markdown-it.git
