@@ -22,17 +22,15 @@ title: "🧰対象言語と環境"
 **本コマンドをコピペして使用する場合は、 `DCC_HOME` に本書のリポジトリのパスを設定** すること。
 :::
 
-# プログラミング言語一覧
+# 言語毎
 
-- Python
-- Ruby
-- JavaScript(Node.js)
-- Java
-- Go
+- [`Python`](#🔧Python)
+- [`Ruby`](#🔧Ruby)
+- [`JavaScript`](#🔧JavaScript)
+- [`Java`](#🔧Java)
+- [`Go`](#🔧Go)
 
-# プログラミング言語毎詳細
-
-## Python
+## 🔧Python
 
 |||
 |:--|:--|
@@ -55,7 +53,7 @@ flake8 src/after_return.py
 ```
 
 
-## Ruby
+## 🔧Ruby
 
 |||
 |:--|:--|
@@ -79,7 +77,7 @@ ruby -wc src/after_return.rb
 rubocop src/after_return.rb
 ```
 
-## JavaScript
+## 🔧JavaScript
 
 |||
 |:--|:--|
@@ -102,7 +100,7 @@ eslint src/after_return.js
 ```
 
 
-## Java
+## 🔧Java
 
 |||
 |:--|:--|
@@ -121,7 +119,7 @@ docker run -it --rm -v $DCC_HOME/projects/java:/app/java -w /app/java dcc-java b
 java src/main/java/AfterReturn.java
 ```
 
-## Go
+## 🔧Go
 
 |||
 |:--|:--|
@@ -139,5 +137,7 @@ docker run -it --rm -v $DCC_HOME/projects/golang:/app/golang -w /app/golang dcc-
 ```
 # コード実行
 go run src/after_return.go
+# 静的解析(標準ツール)実行
+go vet src/after_return.go
 ```
 

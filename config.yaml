@@ -136,6 +136,8 @@ summary: "☠️デッドコードクックブック☠️
 
 [付録]
 
+1. 🛐供養
+
 1. 🧰対象言語と環境
 
 
@@ -203,5 +205,6 @@ chapters:
   - t_cond_str
   - t_cond_regex
   - t_empty_set
+  - memorial
   - environment
   - afterword
