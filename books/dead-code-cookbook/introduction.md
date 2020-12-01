@@ -199,7 +199,7 @@ title: "はじめに"
 - **誤字脱字含む文章校正**
 
 そのため、 **上記のような協力や、🪓マサカリ🪓も歓迎** しています。
-**[本書のGitHub](https://github.com/j5c8k6m8/dead-code-cookbook)のPR(プルリクエスト)** 、 **[Zennの本書のスクラップ(Scraps)](https://zenn.dev/j5c8k6m8/scraps/40bf1f025baa27)** 、 **twitterのハッシュタグ([#デッドコードクックブック](https://twitter.com/hashtag/%E3%83%87%E3%83%83%E3%83%89%E3%82%B3%E3%83%BC%E3%83%89%E3%82%AF%E3%83%83%E3%82%AF%E3%83%96%E3%83%83%E3%82%AF), [#デッドコードレシピ](https://twitter.com/hashtag/%E3%83%87%E3%83%83%E3%83%89%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AC%E3%82%B7%E3%83%94))** などでの連絡をお待ちしています。
+**[本書のGitHub](https://github.com/j5c8k6m8/dead-code-cookbook)のPR(プルリクエスト)** 、または、 **Zennの本書のスクラップ(Scraps)でのコメント** をお待ちしています。
 
 
 ## アドベントカレンダー形式での公開について
