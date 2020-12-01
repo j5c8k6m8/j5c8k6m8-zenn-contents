@@ -19,7 +19,7 @@ except Exception:
 
 `throw` は、多くのプログラミング言語で **例外処理のために大域脱出を行う機能** として用意されている。プログラミング言語によっては、`raise` , `panic` , `fail` といった予約語を用いるものもある。
 
-例外処理と大域脱出を区別するプログラミング言語もある。例えば、Rubyにおいては、例外処理は `raise` だが、大域脱出として、`throw` が提供されている。例外処理を伴わない大域脱出も本パターンには含める。しかし、主にループからの大域脱出で使用する `ラベル付break` は `🧪break後のコード [12/3 公開予定]` として別レシピとする。
+例外処理と大域脱出を区別するプログラミング言語もある。例えば、Rubyにおいては、例外処理は `raise` だが、大域脱出として、`throw` が提供されている。例外処理を伴わない大域脱出も本レシピに含める。しかし、主にループからの大域脱出で使用する `ラベル付break` は [`🧪break後のコード`](./r_after_break) として別レシピとする。
 
 `assert` も例外処理の大域脱出を行う機能であるが、デバッグ用途であり通常の例外処理とは大きく目的が異なるため、 `🧪常に条件がfalseとなるassert後のコード [12/9 公開予定]` として別レシピとする
 
@@ -47,7 +47,7 @@ except Exception:
 |[`Java`](#🔧java)|-|`🚫実行不可`|`unreachable statement`|
 |[`Go`](#🔧go)|-|`⚠検知有`|`unreachable code`|
 
-## Python
+## 🔧Python
 
 `🔧Python` -> `🆗実行可`, `🔩flake8` -> `🆗検知無`
 
@@ -70,7 +70,7 @@ $ flake8 src/after_throw.py
 $ 
 ```
 
-## Ruby
+## 🔧Ruby
 
 `🔧Ruby` -> `🆗警告無`,  `🔩rubocop` -> `⚠検知有`
 
@@ -117,7 +117,7 @@ $
 ```
 
 
-## JavaScript
+## 🔧JavaScript
 
 `🔧JavaScript` -> `🆗実行可`, `🔩eslint` -> `⚠検知有`
 
@@ -145,7 +145,7 @@ $ eslint src/after_throw.js
 $ 
 ```
 
-## Java
+## 🔧Java
 
 `🔧Java` -> `🚫実行不可`
 
@@ -173,7 +173,7 @@ $ java src/main/java/AfterThrow.java
 $ 
 ```
 
-## Go
+## 🔧Go
 
 `🔧Go` -> `⚠検知有`
 
