@@ -27,11 +27,11 @@ title: "👼ネスト修正による中断コードの移動"
 
 # 言語毎
 
-- [`Python`](#🔧Python)
-- [`Ruby`](#🔧Ruby)
-- [`JavaScript`](#🔧JavaScript)
-- [`Java`](#🔧Java)
-- [`Go`](#🔧Go)
+- [`Python`](#🔧python)
+- [`Ruby`](#🔧ruby)
+- [`JavaScript`](#🔧javascript)
+- [`Java`](#🔧java)
+- [`Go`](#🔧go)
 
 
 ## 🔧Python

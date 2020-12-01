@@ -108,7 +108,7 @@ $
 
 - `Python (対象外)`
 - `Ruby (対象外)`
-- [`JavaScript`](#🔧JavaScript)
+- [`JavaScript`](#🔧javascript)
 - `Java (対象外)`
 - `Go (対象外)`
 
