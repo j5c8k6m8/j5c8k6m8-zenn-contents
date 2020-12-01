@@ -11,7 +11,7 @@ title: "📑目次"
     1. [`🧪return後のコード`](./r_after_return)
     1. [`🧪throw後のコード`](./r_after_throw)
     1. [`🧪break後のコード`](./r_after_break)
-    1. `🧪goto後のコード` [12/4 公開予定]
+    1. [`🧪goto後のコード`](./r_after_goto)
     1. `🧪exit後のコード` [12/5 公開予定]
     1. `🧪常にthrowする関数呼出後のコード` [12/6 公開予定]
     1. `🧪常にbreakする高階関数呼出後のコード` [12/7 公開予定]
