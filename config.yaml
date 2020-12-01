@@ -112,9 +112,9 @@ summary: "☠️デッドコードクックブック☠️
 
 2. 🧟ホイスティング
 
-3. 🧟定義の上書き
+3. 🧟組込モジュールの上書き
 
-4. 🧟内側のスコープによる隠蔽
+4. 🧟組込モジュールの隠蔽
 
 5. 🧟実行時除去
 
@@ -197,8 +197,8 @@ chapters:
   - a_fix_call
   - z_goto
   - z_hoisting
-  - z_override_def
-  - z_override_scope
+  - z_builtin_override
+  - z_builtin_hide
   - z_compile_delete
   - z_fallthrough
   - t_forever_func
