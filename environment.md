@@ -24,11 +24,11 @@ title: "🧰対象言語と環境"
 
 # 言語毎
 
-- [`Python`](#🔧Python)
-- [`Ruby`](#🔧Ruby)
-- [`JavaScript`](#🔧JavaScript)
-- [`Java`](#🔧Java)
-- [`Go`](#🔧Go)
+- [`Python`](#🔧python)
+- [`Ruby`](#🔧ruby)
+- [`JavaScript`](#🔧javascript)
+- [`Java`](#🔧java)
+- [`Go`](#🔧go)
 
 ## 🔧Python
 
