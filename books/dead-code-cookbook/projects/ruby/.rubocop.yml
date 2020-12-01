@@ -2,3 +2,5 @@ AllCops:
   NewCops: enable
 Style/FrozenStringLiteralComment:
   Enabled: false
+Documentation:
+  Enabled: false
