@@ -47,7 +47,7 @@ except Exception:
 |[`Java`](#🔧java)|-|`🚫実行不可`|`unreachable statement`|
 |[`Go`](#🔧go)|-|`⚠検知有`|`unreachable code`|
 
-## Python
+## 🔧Python
 
 `🔧Python` -> `🆗実行可`, `🔩flake8` -> `🆗検知無`
 
@@ -70,7 +70,7 @@ $ flake8 src/after_throw.py
 $ 
 ```
 
-## Ruby
+## 🔧Ruby
 
 `🔧Ruby` -> `🆗警告無`,  `🔩rubocop` -> `⚠検知有`
 
@@ -117,7 +117,7 @@ $
 ```
 
 
-## JavaScript
+## 🔧JavaScript
 
 `🔧JavaScript` -> `🆗実行可`, `🔩eslint` -> `⚠検知有`
 
@@ -145,7 +145,7 @@ $ eslint src/after_throw.js
 $ 
 ```
 
-## Java
+## 🔧Java
 
 `🔧Java` -> `🚫実行不可`
 
@@ -173,7 +173,7 @@ $ java src/main/java/AfterThrow.java
 $ 
 ```
 
-## Go
+## 🔧Go
 
 `🔧Go` -> `⚠検知有`
 
