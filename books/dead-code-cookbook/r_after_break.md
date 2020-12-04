@@ -116,7 +116,7 @@ $
 ``` js:after_break.js:./projects/javascript/src/after_break.js
 while(true) {
   break;
-  console.log("Am I dead?")
+  console.log("Am I dead?");
 }
 
 ```
