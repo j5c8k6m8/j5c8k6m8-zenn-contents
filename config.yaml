@@ -18,13 +18,13 @@ summary: "☠️デッドコードクックブック☠️
 
 　1-5. 🧪exit後のコード
 
-　1-6. 🧪常にthrowする関数呼出後のコード
+　1-6. 🧪throwする関数呼出後のコード
 
-　1-7. 🧪常にbreakする高階関数呼出後のコード
+　1-7. 🧪breakする高階関数呼出後のコード
 
-　1-8. 🧪常に実行時エラーとなる処理後のコード
+　1-8. 🧪実行時エラーとなる処理後のコード
 
-　1-9. 🧪常に条件がfalseとなるassert後のコード
+　1-9. 🧪(条件がfalseとなる)assert後のコード
 
 2. 🔖終らない処理を利用するパターン
 
@@ -194,6 +194,7 @@ chapters:
   - r_other_generator_yield
   - a_after_stop_delete
   - a_after_stop_move
+  - a_func_fix
   - a_after_fix_runtime_error
   - a_fix_call
   - z_goto
