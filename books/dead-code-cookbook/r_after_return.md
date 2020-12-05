@@ -8,7 +8,7 @@ title: "🧪return後のコード"
 |👼|[`中断コード削除`](./a_after_stop_delete) [`ネスト修正による中断コードの移動`](./a_after_stop_move)|
 |🧟|[`goto文のラベルによるジャンプ`](./z_goto) [`ホイスティング`](./z_hoisting)|
 
-``` ruby:after_return.rb:./projects/ruby/src/after_return.rb
+``` ruby:🚩 after_return.rb:./projects/ruby/src/after_return.rb
 return
 puts 'Am I dead?'
 
@@ -43,7 +43,7 @@ puts 'Am I dead?'
 
 トップレベル(モジュール) では `return` を使えない。
 
-``` python:after_return.py:./projects/python/src/after_return.py
+``` python:🚩 after_return.py:./projects/python/src/after_return.py
 def f():
     return
     print("Am I dead?")
@@ -67,7 +67,7 @@ $
 
 トップレベルでも `return` が可能。
 
-``` ruby:after_return.rb:./projects/ruby/src/after_return.rb
+``` ruby:🚩 after_return.rb:./projects/ruby/src/after_return.rb
 return
 puts 'Am I dead?'
 
@@ -101,11 +101,11 @@ $
 
 `🔧node.js` でトップレベルの `return` は実行可能。しかし、`🔩eslint` で、 `error  Parsing error: 'return' outside of function` が発生するため、関数内で `return` するコードを示す。
 
-``` js:after_return.js:./projects/javascript/src/after_return.js
+``` js:🚩 after_return.js:./projects/javascript/src/after_return.js
 (() => {
-    return;
-    console.log("Am I dead?");
-})()
+  return;
+  console.log("Am I dead?");
+})();
 ```
 
 ``` console
@@ -126,7 +126,7 @@ $
 
 `🔧Java` -> `🚫実行不可`
 
-``` java:AfterReturn.java:./projects/java/src/main/java/AfterReturn.java
+``` java:🚩 AfterReturn.java:./projects/java/src/main/java/AfterReturn.java
 public class AfterReturn {
     public static void main(String[] args) {
         return;
@@ -150,7 +150,7 @@ $
 
 `🔧Go` -> `⚠検知有`
 
-``` go:after_return.go:./projects/golang/src/after_return.go
+``` go:🚩 after_return.go:./projects/golang/src/after_return.go
 package main
 
 import "fmt"

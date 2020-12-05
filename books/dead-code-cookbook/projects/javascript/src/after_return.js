@@ -1,4 +1,4 @@
 (() => {
-    return;
-    console.log("Am I dead?");
-})()
+  return;
+  console.log("Am I dead?");
+})();
