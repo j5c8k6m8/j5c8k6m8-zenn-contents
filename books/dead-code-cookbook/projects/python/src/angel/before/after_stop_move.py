@@ -1,11 +1,11 @@
 import sys
 
 
-def main():
+def f():
     if len(sys.argv) > 1:
         print("Cannot enter arguments.")
     return
     print("Am I dead?")
 
 
-main()
+f()

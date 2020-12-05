@@ -10,7 +10,7 @@ title: "👼ネスト修正による中断コードの移動"
  import sys
  
  
- def main():
+ def f():
      if len(sys.argv) > 1:
          print("Cannot enter arguments.")
 -    return
@@ -18,7 +18,7 @@ title: "👼ネスト修正による中断コードの移動"
      print("Am I dead?")
  
  
- main()
+ f()
 
 ```
 
@@ -40,7 +40,7 @@ title: "👼ネスト修正による中断コードの移動"
  import sys
  
  
- def main():
+ def f():
      if len(sys.argv) > 1:
          print("Cannot enter arguments.")
 -    return
@@ -48,7 +48,7 @@ title: "👼ネスト修正による中断コードの移動"
      print("Am I dead?")
  
  
- main()
+ f()
 
 ```
 

@@ -8,7 +8,7 @@ title: "🧪goto後のコード"
 |👼|[`中断コード削除`](./a_after_stop_delete) [`ネスト修正による中断コードの移動`](./a_after_stop_move)|
 |🧟|[`goto文のラベルによるジャンプ`](./z_goto) [`ホイスティング`](./z_hoisting)|
 
-``` go:after_goto.go:./projects/golang/src/after_goto.go
+``` go:🚩 after_goto.go:./projects/golang/src/after_goto.go
 package main
 
 import "fmt"
@@ -52,7 +52,7 @@ L:
 
 `🔧Go` -> `⚠検知有`
 
-``` go:after_goto.go:./projects/golang/src/after_goto.go
+``` go:🚩 after_goto.go:./projects/golang/src/after_goto.go
 package main
 
 import "fmt"
