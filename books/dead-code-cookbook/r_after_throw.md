@@ -17,6 +17,17 @@ except Exception:
 
 ```
 
+|🔧言語|🔩ツール|🚩|note|
+|:--|:--|:--|:--|
+|[`Python`](#🔧python)|-|`🆗`|-|
+||`flake8`|`🆗`|-|
+|[`Ruby`](#🔧ruby)|-|`🆗`|-|
+||`rubocop`|`⚠`|`UnreachableCode`|
+|[`JavaScript`](#🔧javascript)|-|`🆗`|-|
+||`eslint`|`⚠`|`no-unreachable`|
+|[`Java`](#🔧java)|-|`🚫`|`unreachable_statement`|
+|[`Go`](#🔧go)|-|`⚠`|`unreachable_code`|
+
 `throw` は、多くのプログラミング言語で **例外処理のために大域脱出を行う機能** として用意されている。プログラミング言語によっては、`raise` , `panic` , `fail` といった予約語を用いるものもある。
 
 例外処理と大域脱出を区別するプログラミング言語もある。例えば、Rubyにおいては、例外処理は `raise` だが、大域脱出として、`throw` が提供されている。例外処理を伴わない大域脱出も本レシピに含める。しかし、主にループからの大域脱出で使用する `ラベル付break` は [`🧪break後のコード`](./r_after_break) として別レシピとする。
@@ -34,20 +45,7 @@ except Exception:
  - `throw` が内側のスコープで定義されている -> [`🧟組込モジュールの隠蔽`](./z_builtin_hide)
 
 
-# 言語毎
-
-|🔧言語|🔩ツール|判定|備考|
-|:--|:--|:--|:--|
-|[`Python`](#🔧python)|-|`🆗実行可`|-|
-||`flake8`|`🆗検知無`|-|
-|[`Ruby`](#🔧ruby)|-|`🆗警告無`|-|
-||`rubocop`|`⚠検知有`|`UnreachableCode`|
-|[`JavaScript`](#🔧javascript)|-|`🆗実行可`|-|
-||`eslint`|`⚠検知有`|`no-unreachable`|
-|[`Java`](#🔧java)|-|`🚫実行不可`|`unreachable statement`|
-|[`Go`](#🔧go)|-|`⚠検知有`|`unreachable code`|
-
-## 🔧Python
+# 🔧Python
 
 `🔧Python` -> `🆗実行可`, `🔩flake8` -> `🆗検知無`
 
@@ -70,7 +68,7 @@ $ flake8 src/after_throw.py
 $ 
 ```
 
-## 🔧Ruby
+# 🔧Ruby
 
 `🔧Ruby` -> `🆗警告無`,  `🔩rubocop` -> `⚠検知有`
 
@@ -117,7 +115,7 @@ $
 ```
 
 
-## 🔧JavaScript
+# 🔧JavaScript
 
 `🔧JavaScript` -> `🆗実行可`, `🔩eslint` -> `⚠検知有`
 
@@ -145,7 +143,7 @@ $ eslint src/after_throw.js
 $ 
 ```
 
-## 🔧Java
+# 🔧Java
 
 `🔧Java` -> `🚫実行不可`
 
@@ -173,7 +171,7 @@ $ java src/main/java/AfterThrow.java
 $ 
 ```
 
-## 🔧Go
+# 🔧Go
 
 `🔧Go` -> `⚠検知有`
 
