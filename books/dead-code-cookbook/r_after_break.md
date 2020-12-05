@@ -16,6 +16,17 @@ while True:
 
 ```
 
+|🔧言語|🔩ツール|🚩|note|
+|:--|:--|:--|:--|
+|[`Python`](#🔧python)|-|`🆗`|-|
+||`flake8`|`🆗`|-|
+|[`Ruby`](#🔧ruby)|-|`⚠`|`warning:_statement_not_reached`|
+||`rubocop`|`⚠`|`UnreachableCode`|
+|[`JavaScript`](#🔧javascript)|-|`🆗`|-|
+||`eslint`|`⚠`|`no-unreachable`|
+|[`Java`](#🔧java)|-|`🚫`|`unreachable_statement`|
+|[`Go`](#🔧go)|-|`⚠`|`unreachable_code`|
+
 `break` は、多くのプログラミング言語で、 **ループ文から抜け出すために使用** する。プログラミング言語によっては、 `switch文` から抜け出すためにも使う。
 
 `continue` などのループ文で用いられるジャンプ文を利用した場合も、本レシピに含める。
@@ -29,20 +40,7 @@ while True:
  - 削除対象に `goto文のラベル` が記載されている。 -> [`🧟goto文のラベルによるジャンプ`](./z_goto)
  - 削除対象に `ホイスティング対象` が記載されている。  -> [`🧟ホイスティング`](./z_hoisting)
 
-# 言語毎
-
-|🔧言語|🔩ツール|判定|備考|
-|:--|:--|:--|:--|
-|[`Python`](#🔧python)|-|`🆗実行可`|-|
-||`flake8`|`🆗検知無`|-|
-|[`Ruby`](#🔧ruby)|-|`⚠警告有`|`warning: statement not reached`|
-||`rubocop`|`⚠検知有`|`UnreachableCode`|
-|[`JavaScript`](#🔧javascript)|-|`🆗実行可`|-|
-||`eslint`|`⚠検知有`|`no-unreachable`|
-|[`Java`](#🔧java)|-|`🚫実行不可`|`unreachable statement`|
-|[`Go`](#🔧go)|-|`⚠検知有`|`unreachable code`|
-
-## 🔧Python
+# 🔧Python
 
 `🔧Python` -> `🆗実行可`, `🔩flake8` -> `🆗検知無`
 
@@ -63,7 +61,7 @@ $ flake8 src/after_break.py
 $ 
 ```
 
-## 🔧Ruby
+# 🔧Ruby
 
 `🔧Ruby` -> `⚠警告有`,  `🔩rubocop` -> `⚠検知有`
 
@@ -107,7 +105,7 @@ src/after_break.rb:3:3: W: Lint/UnreachableCode: Unreachable code detected.
 $ 
 ```
 
-## 🔧JavaScript
+# 🔧JavaScript
 
 `🔧JavaScript` -> `🆗実行可`, `🔩eslint` -> `⚠検知有`
 
@@ -136,7 +134,7 @@ $ eslint src/after_break.js
 $ 
 ```
 
-## 🔧Java
+# 🔧Java
 
 `🔧Java` -> `🚫実行不可`
 
@@ -193,7 +191,7 @@ $
 ```
 
 
-## 🔧Go
+# 🔧Go
 
 `🔧Go` -> `⚠検知有`
 

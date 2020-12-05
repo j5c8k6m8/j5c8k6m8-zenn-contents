@@ -14,6 +14,17 @@ print("Am I dead?")
 
 ```
 
+|🔧言語|🔩ツール|🚩|note|
+|:--|:--|:--|:--|
+|[`Python`](#🔧python)|-|`🆗`|-|
+||`flake8`|`🆗`|-|
+|[`Ruby`](#🔧ruby)|-|`🆗`|-|
+||`rubocop`|`⚠`|`UnreachableCode`|
+|[`JavaScript`](#🔧javascript)|-|`🆗`|-|
+||`eslint`|`🆗`|-|
+|[`Java`](#🔧java)|-|`🆗`|-|
+|[`Go`](#🔧go)|-|`🆗`|-|
+
 `exit` は、多くのプログラミング言語で、処理(プロセス)を終了させるために使われる。
 
 `exit` は１つのプログラミング言語内に複数の関数が用意されていることが多い。
@@ -43,20 +54,7 @@ print("Am I dead?")
  - `exit` が内側のスコープで定義されている -> [`🧟組込モジュールの隠蔽`](./z_builtin_hide)
 
 
-# 言語毎
-
-|🔧言語|🔩ツール|判定|備考|
-|:--|:--|:--|:--|
-|[`Python`](#🔧python)|-|`🆗実行可`|-|
-||`flake8`|`🆗検知無`|-|
-|[`Ruby`](#🔧ruby)|-|`⚠警告有`|`warning: statement not reached`|
-||`rubocop`|`⚠検知有`|`UnreachableCode`|
-|[`JavaScript`](#🔧javascript)|-|`🆗実行可`|-|
-||`eslint`|`🆗検知無`|`no-unreachable`|
-|[`Java`](#🔧java)|-|`🆗実行可`|`unreachable statement`|
-|[`Go`](#🔧go)|-|`🆗検知無`|`unreachable code`|
-
-## Python
+# Python
 
 `🔧Python` -> `🆗実行可`, `🔩flake8` -> `🆗検知無`
 
@@ -78,7 +76,7 @@ $ flake8 src/after_exit.py
 $ 
 ```
 
-## Ruby
+# Ruby
 
 `🔧Ruby` -> `🆗警告無`,  `🔩rubocop` -> `⚠検知有`
 
@@ -115,7 +113,7 @@ puts 'Am I dead?'
 $ 
 ```
 
-## JavaScript
+# JavaScript
 
 `🔧JavaScript` -> `🆗実行可`, `🔩eslint` -> `🆗検知無`
 
@@ -137,7 +135,7 @@ $ eslint src/after_exit.js
 $ 
 ```
 
-## Java
+# Java
 
 `🔧Java` -> `🆗実行可`
 
@@ -167,7 +165,7 @@ $ java src/main/java/AfterExit.java
 $ 
 ```
 
-## Go
+# Go
 
 `🔧Go` -> `🆗検知無`
 
