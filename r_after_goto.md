@@ -8,6 +8,28 @@ title: "🧪goto後のコード"
 |👼|[`中断コード削除`](./a_after_stop_delete) [`ネスト修正による中断コードの移動`](./a_after_stop_move)|
 |🧟|[`goto文のラベルによるジャンプ`](./z_goto) [`ホイスティング`](./z_hoisting)|
 
+``` go:after_goto.go:./projects/golang/src/after_goto.go
+package main
+
+import "fmt"
+
+func main() {
+	goto L
+	fmt.Println("Am I dead?")
+L:
+	return
+}
+
+```
+
+|🔧言語|🔩ツール|🚩|note|
+|:--|:--|:--|:--|
+|Python|-|-|対象外|
+|Ruby|-|-|対象外|
+|JavaScript|-|-|対象外|
+|Java|-|-|対象外|
+|[`Go`](#🔧go)|-|`⚠`|`unreachable_code`|
+
 `goto` は、指定したラベルにジャンプするために使用する。
 
 ラベルを利用する点で、`ラベル付break` と共通点があるが、 `ラベル付break` を利用したデッドコードレシピは [`🧪break後のコード`](./r_after_break) に含める。
@@ -26,17 +48,7 @@ title: "🧪goto後のコード"
  - 削除対象に `ホイスティング対象` が記載されている。  -> [`🧟ホイスティング`](./z_hoisting)
 
 
-# 言語毎
-
-|🔧言語|🔩ツール|判定|備考|
-|:--|:--|:--|:--|
-|Python|-|対象外|-|
-|Ruby|-|対象外|-|
-|JavaScript|-|対象外|-|
-|Java|-|対象外|-|
-|[`Go`](#🔧go)|-|`⚠検知有`|`unreachable code`|
-
-## 🔧Go
+# 🔧Go
 
 `🔧Go` -> `⚠検知有`
 

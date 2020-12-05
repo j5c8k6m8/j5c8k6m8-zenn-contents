@@ -14,6 +14,17 @@ puts 'Am I dead?'
 
 ```
 
+|🔧言語|🔩ツール|🚩|note|
+|:--|:--|:--|:--|
+|[`Python`](#🔧python)|-|`🆗`|-|
+||`flake8`|`🆗`|-|
+|[`Ruby`](#🔧ruby)|-|`⚠`|`warning:_statement_not_reached`|
+||`rubocop`|`⚠`|`UnreachableCode`|
+|[`JavaScript`](#🔧javascript)|-|`🆗`|-|
+||`eslint`|`⚠`|`no-unreachable`|
+|[`Java`](#🔧java)|-|`🚫`|`unreachable_statement`|
+|[`Go`](#🔧go)|-|`⚠`|`unreachable_code`|
+
 `return` は、多くのプログラミング言語で、処理を呼出元に戻すために使われる。関数において使われることが多いが、スクリプト言語ではトップレベルのスクリプト環境でも実行できるものもある。
 
 [`🔖中断を利用するパターン`](./p_after) である。`return` 後に書かれているコードは、基本的にはデッドコードとなる。デバッグのために使われることもある。
@@ -25,20 +36,8 @@ puts 'Am I dead?'
  - 削除対象に `goto文のラベル` が記載されている。 -> [`🧟goto文のラベルによるジャンプ`](./z_goto)
  - 削除対象に `ホイスティング対象` が記載されている。  -> [`🧟ホイスティング`](./z_hoisting)
 
-# 言語毎
 
-|🔧言語|🔩ツール|判定|備考|
-|:--|:--|:--|:--|
-|[`Python`](#🔧python)|-|`🆗実行可`|-|
-||`flake8`|`🆗検知無`|-|
-|[`Ruby`](#🔧ruby)|-|`⚠警告有`|`warning: statement not reached`|
-||`rubocop`|`⚠検知有`|`UnreachableCode`|
-|[`JavaScript`](#🔧javascript)|-|`🆗実行可`|-|
-||`eslint`|`⚠検知有`|`no-unreachable`|
-|[`Java`](#🔧java)|-|`🚫実行不可`|`unreachable statement`|
-|[`Go`](#🔧go)|-|`⚠検知有`|`unreachable code`|
-
-## 🔧Python
+# 🔧Python
 
 `🔧Python` -> `🆗実行可`, `🔩flake8` -> `🆗検知無`
 
@@ -62,7 +61,7 @@ $ flake8 src/after_return.py
 $ 
 ```
 
-## 🔧Ruby
+# 🔧Ruby
 
 `🔧Ruby` -> `⚠警告有`,  `🔩rubocop` -> `⚠検知有`
 
@@ -96,7 +95,7 @@ puts 'Am I dead?'
 $ 
 ```
 
-## 🔧JavaScript
+# 🔧JavaScript
 
 `🔧JavaScript` -> `🆗実行可`, `🔩eslint` -> `⚠検知有`
 
@@ -123,7 +122,7 @@ $ eslint src/after_return.js
 $ 
 ```
 
-## 🔧Java
+# 🔧Java
 
 `🔧Java` -> `🚫実行不可`
 
@@ -147,7 +146,7 @@ error: compilation failed
 $ 
 ```
 
-## 🔧Go
+# 🔧Go
 
 `🔧Go` -> `⚠検知有`
 
