@@ -8,7 +8,7 @@ title: "🧪exit後のコード"
 |👼|[`中断コード削除`](./a_after_stop_delete) [`ネスト修正による中断コードの移動`](./a_after_stop_move)|
 |🧟|[`goto文のラベルによるジャンプ`](./z_goto) [`ホイスティング`](./z_hoisting) [`組込モジュールの上書き`](./z_builtin_override) [`組込モジュールの隠蔽`](./z_builtin_hide)|
 
-``` python:after_exit.py:./projects/python/src/after_exit.py
+``` python:🚩 after_exit.py:./projects/python/src/after_exit.py
 exit()
 print("Am I dead?")
 
@@ -54,7 +54,7 @@ print("Am I dead?")
  - `exit` が内側のスコープで定義されている -> [`🧟組込モジュールの隠蔽`](./z_builtin_hide)
 
 
-# Python
+# 🔧Python
 
 `🔧Python` -> `🆗実行可`, `🔩flake8` -> `🆗検知無`
 
@@ -62,7 +62,7 @@ Pythonには3つの `exit` 関数がある[^1]。以下では組み込み関数�
 
 [^1]: https://docs.pyq.jp/python/library/exit.html
 
-``` python:after_exit.py:./projects/python/src/after_exit.py
+``` python:🚩 after_exit.py:./projects/python/src/after_exit.py
 exit()
 print("Am I dead?")
 
@@ -76,7 +76,7 @@ $ flake8 src/after_exit.py
 $ 
 ```
 
-# Ruby
+# 🔧Ruby
 
 `🔧Ruby` -> `🆗警告無`,  `🔩rubocop` -> `⚠検知有`
 
@@ -85,7 +85,7 @@ rubyでは、Kernelモジュールに、`exit`, `exit!`, `abort` の3つの関�
 [^2]: https://docs.pyq.jp/python/library/exit.html
 
 
-``` ruby:after_exit.rb:./projects/ruby/src/after_exit.rb
+``` ruby:🚩 after_exit.rb:./projects/ruby/src/after_exit.rb
 exit
 puts 'Am I dead?'
 
@@ -113,7 +113,7 @@ puts 'Am I dead?'
 $ 
 ```
 
-# JavaScript
+# 🔧JavaScript
 
 `🔧JavaScript` -> `🆗実行可`, `🔩eslint` -> `🆗検知無`
 
@@ -121,8 +121,8 @@ node.jsでは、processオブジェクトに、`exit`, `abort` のの関数が�
 
 [^3]: https://nodejs.org/api/process.html#process_process
 
-``` js:after_exit.js:./projects/javascript/src/after_exit.js
-process.exit()
+``` js:🚩 after_exit.js:./projects/javascript/src/after_exit.js
+process.exit();
 console.log("Am I dead?");
 
 ```
@@ -135,7 +135,7 @@ $ eslint src/after_exit.js
 $ 
 ```
 
-# Java
+# 🔧Java
 
 `🔧Java` -> `🆗実行可`
 
@@ -147,7 +147,7 @@ $
 
 [^5]: https://docs.oracle.com/javase/jp/7/api/java/lang/System.html#exit(int)
 
-``` java:AfterExit.java:./projects/java/src/main/java/AfterExit.java
+``` java:🚩 AfterExit.java:./projects/java/src/main/java/AfterExit.java
 public class AfterExit {
     public static void main(String[] args) {
         try {
@@ -165,7 +165,7 @@ $ java src/main/java/AfterExit.java
 $ 
 ```
 
-# Go
+# 🔧Go
 
 `🔧Go` -> `🆗検知無`
 
@@ -173,7 +173,7 @@ $
 
 [^6]: https://sharpknock.com/posts/programming/golang-exit.html
 
-``` go:after_exit.go:./projects/golang/src/after_exit.go
+``` go:🚩 after_exit.go:./projects/golang/src/after_exit.go
 package main
 
 import (

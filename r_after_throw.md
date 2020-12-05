@@ -8,7 +8,7 @@ title: "🧪throw後のコード"
 |👼|[`中断コード削除`](./a_after_stop_delete) [`ネスト修正による中断コードの移動`](./a_after_stop_move)|
 |🧟|[`goto文のラベルによるジャンプ`](./z_goto) [`ホイスティング`](./z_hoisting) [`組込モジュールの上書き`](./z_builtin_override) [`組込モジュールの隠蔽`](./z_builtin_hide)|
 
-``` python:after_throw.py:./projects/python/src/after_throw.py
+``` python:🚩 after_throw.py:./projects/python/src/after_throw.py
 try:
     raise Exception()
     print("Am I dead?")
@@ -51,7 +51,7 @@ except Exception:
 
 予約語は `raise` を用いる。
 
-``` python:after_throw.py:./projects/python/src/after_throw.py
+``` python:🚩 after_throw.py:./projects/python/src/after_throw.py
 try:
     raise Exception()
     print("Am I dead?")
@@ -81,11 +81,12 @@ Rubyでは **予約語ではなくKernelモジュールのメソッドとして�
 
 例外処理を伴わない、大域脱出用のメソッドとして、 `throw` が別に用意されている。
 
-``` ruby:after_throw.rb:./projects/ruby/src/after_throw.rb
+``` ruby:🚩 after_throw.rb:./projects/ruby/src/after_throw.rb
 begin
   raise
   puts 'Am I dead?'
 rescue RuntimeError
+  # do nothing
 end
 
 ```
@@ -98,6 +99,7 @@ $ ruby -wc src/after_throw.rb
 Syntax OK
 $ # rubocop
 $ rubocop src/after_throw.rb
+/app/ruby/.rubocop.yml: Warning: no department given for Documentation.
 Inspecting 1 file
 W
 
@@ -106,11 +108,8 @@ Offenses:
 src/after_throw.rb:3:3: W: Lint/UnreachableCode: Unreachable code detected.
   puts 'Am I dead?'
   ^^^^^^^^^^^^^^^^^
-src/after_throw.rb:4:1: W: Lint/SuppressedException: Do not suppress exceptions.
-rescue RuntimeError
-^^^^^^^^^^^^^^^^^^^
 
-1 file inspected, 2 offenses detected
+1 file inspected, 1 offense detected
 $ 
 ```
 
@@ -119,26 +118,26 @@ $
 
 `🔧JavaScript` -> `🆗実行可`, `🔩eslint` -> `⚠検知有`
 
-``` js:after_throw.js:./projects/javascript/src/after_throw.js
+``` js:🚩 after_throw.js:./projects/javascript/src/after_throw.js
 try {
   throw 'Error';
   console.log("Am I dead?");
 } catch (e) {
+  // empty
 }
 
 ```
 
 ``` console
 $ # コード実行
-$ node src/after_throw.js
+$ node src/after_throw.js 
 $ # eslint
-$ eslint src/after_throw.js
+$ eslint src/after_throw.js 
 
 /app/javascript/src/after_throw.js
-  3:3   error  Unreachable code       no-unreachable
-  4:13  error  Empty block statement  no-empty
+  3:3  error  Unreachable code  no-unreachable
 
-✖ 2 problems (2 errors, 0 warnings)
+✖ 1 problem (1 error, 0 warnings)
 
 $ 
 ```
@@ -147,7 +146,7 @@ $
 
 `🔧Java` -> `🚫実行不可`
 
-``` java:AfterThrow.java:./projects/java/src/main/java/AfterThrow.java
+``` java:🚩 AfterThrow.java:./projects/java/src/main/java/AfterThrow.java
 public class AfterThrow {
     public static void main(String[] args) {
         try {
@@ -179,7 +178,7 @@ $
 
 なお、Goでのエラーハンドリングは、 `errorインタフェース` を `戻り値` の最後に付与するのが一般的であり、`panic` はいわゆる `ランタイムエラー` である点には注意が必要。
 
-``` go:after_throw.go:./projects/golang/src/after_throw.go
+``` go:🚩 after_throw.go:./projects/golang/src/after_throw.go
 package main
 
 import "fmt"
