@@ -31,6 +31,10 @@ description
 
 # 🔧Python
 
+`🚩` : `🔧Python` -> `🆗実行可`, `🔩flake8` -> `🆗検知無`
+`🏁` : 対象外
+
+
 ``` python:🚩 template.py:./projects/python/src/template.py
 ```
 
