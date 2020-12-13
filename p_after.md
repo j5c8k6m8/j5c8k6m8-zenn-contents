@@ -24,5 +24,5 @@ title: "🔖中断を利用するパターン"
 1. [`🧪exit後のコード`](./r_after_exit)
 1. [`🧪throwする関数呼出後のコード`](r_after_func_throw)
 1. [`🧪breakするコールバック関数呼出後のコード`](./r_after_yield_break)
-1. `🧪実行時エラーとなる処理後のコード` [12/8 公開予定]
+1. [`🧪実行時エラーとなる処理後のコード`](./r_after_runtime_error)
 1. `🧪(条件がfalseとなる)assert後のコード` [12/9 公開予定]
