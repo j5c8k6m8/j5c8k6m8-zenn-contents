@@ -8,7 +8,7 @@ title: ""
 |👼||
 |🧟||
 
-``` python:template.py:./projects/python/src/template.rb
+``` python:🚩 template.py:./projects/python/src/template.rb
 ```
 
 |🔧言語|🔩ツール|🚩|note|

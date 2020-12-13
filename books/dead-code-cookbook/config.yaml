@@ -97,11 +97,11 @@ summary: "☠️デッドコードクックブック☠️
 
 2. 👼ネスト修正による中断コードの移動
 
-3. 👼実行時エラー修正
+3. 👼関数修正
 
-4. 👼関数呼出処理修正
+4. 👼関数呼出追加
 
-5. 👼関数呼出追加
+5. 👼実行時エラー修正
 
 6. 👼条件削除
 
@@ -198,8 +198,7 @@ chapters:
   - a_after_stop_move
   - a_func_fix
   - a_func_add
-  - a_after_fix_runtime_error
-  - a_fix_call
+  - a_runtime_error_fix
   - z_goto
   - z_hoisting
   - z_builtin_override
