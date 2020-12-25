@@ -54,6 +54,8 @@ except Exception:
 
 # 🔧Python
 
+`🔧Python` -> `🆗実行可`, `🔩flake8` -> `🆗検知無`
+
 ``` python:🚩 after_func_throw.py:./projects/python/src/after_func_throw.py
 def f():
     raise Exception()
@@ -76,6 +78,8 @@ $
 ```
 
 # 🔧Ruby
+
+`🔧Ruby` -> `🆗警告無`, `rubocop` -> `🆗検知無`
 
 ``` ruby:🚩 after_func_throw.rb:./projects/ruby/src/after_func_throw.rb
 def f
@@ -109,6 +113,8 @@ $
 
 # 🔧JavaScript
 
+`🔧JavaScript` -> `🆗実行可`, `eslint` -> `🆗検知無`
+
 ``` js:🚩 after_func_throw.js:./projects/javascript/src/after_func_throw.js
 const f = () => {
   throw 'Error';
@@ -133,6 +139,8 @@ $
 
 # 🔧Java
 
+`🔧Java` -> `🆗実行可`
+
 ``` java:🚩 AfterFuncThrow.java:./projects/java/src/main/java/AfterFuncThrow.java
 public class AfterFuncThrow {
     public static void main(String[] args) {
@@ -156,6 +164,8 @@ $
 ```
 
 # 🔧Go
+
+`🔧go` -> `🆗検知無`
 
 ``` go:🚩 after_func_throw.go:./projects/golang/src/after_func_throw.go
 package main

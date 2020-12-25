@@ -43,6 +43,9 @@ description
 
 # 🔧Ruby
 
+`🚩` : `🔧Ruby` -> `🆗警告無`, `rubocop` -> `🆗検知無`
+`🏁` : 対象外
+
 ``` ruby:🚩 template.rb:./projects/ruby/src/template.rb
 ```
 
@@ -50,6 +53,9 @@ description
 ```
 
 # 🔧JavaScript
+
+`🚩` : `🔧JavaScript` -> `🆗実行可`, `eslint` -> `🆗検知無`
+`🏁` : 対象外
 
 ``` js:🚩 template.js:./projects/javascript/src/template.js
 ```
@@ -59,6 +65,9 @@ description
 
 # 🔧Java
 
+`🚩` : `🔧Java` -> `🆗実行可`
+`🏁` : 対象外
+
 ``` java:🚩 Template.java:./projects/java/src/main/java/Template.java
 ```
 
@@ -66,6 +75,9 @@ description
 ```
 
 # 🔧Go
+
+`🚩` : `🔧go` -> `🆗検知無`
+`🏁` : 対象外
 
 ``` go:🚩 template.go:./projects/golang/src/template.go
 ```
