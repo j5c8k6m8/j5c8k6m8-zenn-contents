@@ -64,6 +64,8 @@ $
 
 # 🔧Ruby
 
+`🔧Ruby` -> `🆗警告無`, `rubocop` -> `🆗検知無`
+
 ``` ruby:🚩 after_runtime_error.rb:./projects/ruby/src/after_runtime_error.rb
 begin
   nil.a
@@ -98,6 +100,8 @@ $
 
 # 🔧JavaScript
 
+`🔧JavaScript` -> `🆗実行可`, `eslint` -> `🆗検知無`
+
 ``` js:🚩 after_runtime_error.js:./projects/javascript/src/after_runtime_error.js
 try {
   null.a;
@@ -117,6 +121,8 @@ $
 ```
 
 # 🔧Java
+
+`🔧Java` -> `🆗実行可`
 
 ``` java:🚩 AfterRuntimeError.java:./projects/java/src/main/java/AfterRuntimeError.java
 public class AfterRuntimeError {
@@ -138,6 +144,8 @@ $
 ```
 
 # 🔧Go
+
+`🔧go` -> `🆗検知無`
 
 ``` go:🚩 after_runtime_error.go:./projects/golang/src/after_runtime_error.go
 package main
