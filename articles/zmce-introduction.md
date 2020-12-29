@@ -13,8 +13,8 @@ published: true
 **コマンドひとつで、Zennの記事/本 のコードブロックを更新する** ためのツールです。
 
 :::message
-本記事は、 **v0.1.0以降** のモジュールに対する説明です。
-バージョンは **`npm info zmce`** で確認し、v0.1.0以前のモジュールの場合、
+本記事は、 **v0.2.0以降** のモジュールに対する説明です。
+バージョンは **`npm info zmce`** で確認し、v0.2.0以前のモジュールの場合、
 **`npm install zmce@latest`** でアップデートしてください。
 :::
 
@@ -54,14 +54,14 @@ submodulesのディレクトリの作成は必須ではなく **推奨(デフォ
 ``` shell:変更対象が存在しない / 変更がない場合
 $ npx zmce
 [zmce] 処理を開始します。
-[zmce] 処理を終了します。
+[zmce] 処理を終了します。(変更有 0, 変更無 2, エラー有 0, 対象無 1, スキップ 0)
 ```
 
 ``` shell:変更があった場合
 $ npx zmce
 [zmce] 処理を開始します。
 [articles/zmce-introduction.md] コードブロックを修正しました。
-[zmce] 処理を終了します。
+[zmce] 処理を終了します。(変更有 1, 変更無 1, エラー有 0, 対象無 1, スキップ 0)
 ```
 
 # zmce拡張記法
@@ -210,7 +210,7 @@ $ npx zmce
 [articles/sample_article.md] コードブロックを修正しました。
 [books/sample_book/example1.md] コードブロックを修正しました。
 [books/sample_book/example2.md] コードブロックを修正しました。
-[zmce] 処理を終了します。
+[zmce] 処理を終了します。(変更有 3, 変更無 0, エラー有 0, 対象無 0, スキップ 0)
 ```
 
 ````` md:sample_articles.md(コマンド実行後):zmce/test/description_case/relative_path_description/expected/articles/sample_article.md
@@ -295,7 +295,7 @@ Gitのサブモジュールの利用を推奨していますが、サブモジ�
 :::
 
 :::message
-参照用ディレクトリ名は、デフォルト(指定なし)では 「submodules」 ですが、**zmce.config.ymlに設定すれば、(全体/記事/本 毎に) 変更** できます。
+参照用ディレクトリ名は、デフォルト(指定なし)では 「submodules」 です。**zmce.config.ymlに設定すれば、(全体/記事/本/チャプター 毎に) 変更** できます。
 :::
 
 [^submodule]: Gitのサブモジュールは、 `git submodule` コマンドで管理できます。例えば、zmce自体のGitリポジトリを参照先リポジトリとして追加するには、 `git submodule add https://github.com/j5c8k6m8/zmce.git submodules/zmce` を実行します。
@@ -404,7 +404,7 @@ $ npx zmce
 [zmce] 処理を開始します。
 [articles/sample_article.md] コードブロックを修正しました。
 [books/sample_book/example1.md] コードブロックを修正しました。
-[zmce] 処理を終了します。
+[zmce] 処理を終了します。(変更有 2, 変更無 0, エラー有 0, 対象無 1, スキップ 0)
 ```
 
 ````` md:sample_articles.md(コマンド実行後):zmce/test/description_case/simple_path_description/expected/articles/sample_article.md
@@ -474,7 +474,7 @@ for(var i=1;i<101;i++) console.log((i%3?'':'fizz')+(i%5?'':'buzz')||i);
 $ npx zmce
 [zmce] 処理を開始します。
 [articles/sample_article.md] コードブロックを修正しました。
-[zmce] 処理を終了します。
+[zmce] 処理を終了します。(変更有 1, 変更無 0, エラー有 0, 対象無 0, スキップ 0)
 ```
 
 ````` md:sample_article.md(コマンド実行後):zmce/test/description_case/abs_path_description/expected/articles/sample_article.md
@@ -507,17 +507,14 @@ BUG_REPORT_URL="https://bugs.debian.org/"
 Zennのルートディレクトリに **zmce.config.yaml** を配置することで、
 **`npx zmce`コマンドの挙動を変更** できます。
 (zmce.config.yamlが存在しない場合、デフォルトの挙動となります。カスタマイズが必要な場合、zmce.config.yamlを手動で作成してください。)
-以下の、2点について、 **全体(デフォルト) と、記事/本毎** の挙動を設定できます。
+以下の、2点について、 **全体(デフォルト) と、記事/本/チャプター毎** の挙動を設定できます。
 
- 1. **参照用ディレクトリ名** (キー: `relativeRoot`, デフォルト: `submodules`)
- 2. **置換対象コードブロック区切り文字列** (キー: `fenceStr`, デフォルト: ` ``` `)
+ 1. **参照用ディレクトリ名** (キー: `relativeRoot`, デフォルト: ` "submodules" `)
+ 2. **置換対象コードブロック区切り文字列** (キー: `fenceStr`, デフォルト: ` "```" `)
+ 2. **対象外(skip)設定** (キー: `skip`, デフォルト: ` false `)
 
 コンフィグファイルのフォーマットは以下の通りです。
 **各キーは省略可能** です。(省略時はデフォルトを利用します。)
-
-:::message
-記事/本 毎に設定を上書きできますが、チャプター毎の設定はできません。
-:::
 
 ``` yaml
 relativeRoot: "submodules"
@@ -529,6 +526,7 @@ articles: # 記事毎の設定(上書き)
     sample_article2: # 記事のスラッグ
         relativeRoot: ""
         fenceStr: "~~~"
+        skip: true
 books: # 本毎の設定(上書き)
     sample_book1: # 本のスラッグ
         relativeRoot: ""
@@ -536,13 +534,19 @@ books: # 本毎の設定(上書き)
     sample_book2: # 本のスラッグ
         relativeRoot: ""
         fenceStr: "~~~"
+        skip: true
+        chapters: # チャプター毎の設定(本毎の設定を更に上書き)
+            sample_chapter1: # チャプターのスラッグ
+                relativeRoot: ""
+                fenceStr: "~~~"
+                skip: false
 ```
 
 ---
 
 ### １． 参照用ディレクトリ名のカスタマイズ
 
-キー: `relativeRoot`, デフォルト: `submodules`
+キー: `relativeRoot`, デフォルト: ` "submodules" `
 
 参照用のディレクトリ名を設定することができます。
 
@@ -692,7 +696,7 @@ $ npx zmce
 [articles/sample_article.md] コードブロックを修正しました。
 [books/sample_book/example1.md] コードブロックを修正しました。
 [books/sample_book/example2.md] コードブロックを修正しました。
-[zmce] 処理を終了します。
+[zmce] 処理を終了します。(変更有 4, 変更無 0, エラー有 0, 対象無 0, スキップ 0)
 ```
 
 ````` md:sample_article.md(コマンド実行後):zmce/test/description_case/config_relative_root/expected/articles/sample_article.md
@@ -783,7 +787,7 @@ https://zenn.dev/zenn
 
 ### ２． 置換対象コードブロック区切り文字列のカスタマイズ
 
-キー: `fenceStr`, デフォルト: ` ``` `
+キー: `fenceStr`, デフォルト: ` "```" `
 
 Zennのコードブロックは、` ``` `のみではなく、**`~~~` のように、チルダを用いる** ことができます。また、 **` ```` ` のように連続3つ以上** であれば、コードブロックの区切り文字として判定されます。これは、**コードブロック中にコードブロックを記載する時** にも利用できます。[^fence_ref]
 
@@ -898,7 +902,7 @@ $ npx zmce
 [articles/sample_article.md] コードブロックを修正しました。
 [books/sample_book/example1.md] コードブロックを修正しました。
 [books/sample_book/example2.md] コードブロックを修正しました。
-[zmce] 処理を終了します。
+[zmce] 処理を終了します。(変更有 3, 変更無 0, エラー有 0, 対象無 0, スキップ 0)
 ```
 
 ````` md:sample_article.md(コマンド実行後):zmce/test/description_case/config_fence_str_first/expected/articles/sample_article.md
@@ -997,6 +1001,209 @@ $ npm install zenn-cli # zenn-cliを導入
 
 ---
 
+
+### 3. 対象外(skip)設定
+
+キー: `skip`, デフォルト: ` false `
+
+zmceの拡張記法では、Zennのマークダウン記法で表示されない部分を利用するため、通常、`skip` を明示的に指定する必要はありません。
+
+`skip` を指定せずに、 **zmce拡張記法を用いていない場合、処理結果を「対象無」** としてカウントします。**対象無の場合は、zmceコマンドにおいて、ファイルのパースを行います。**
+ファイルサイズが大きい場合や、ファイル数が非常に多い場合は **zmceコマンドの実行時間に影響** します。
+
+`skip` を指定すると、ファイルのパース自体をskipすることで、zmceコマンドの実行時間を短くできます。**skipを指定した場合は、処理結果を「スキップ」としてカウント**します。非常にファイル数が多く、デフォルトの挙動を `skip` にしたい場合は、トップレベルのskipプロパティを `true` に変更することで、記事/本/チャプター毎に明示的に `false` を指定したファイルのみパースする事も実現できます。
+
+また、 `skip` はテンプレートファイル(コピー用のファイル)などで、zmce拡張記法を用いたファイルを更新対象外とする（警告を表示させない）ためにも用いることができるでしょう。
+
+:::details 使用例を見る
+以下のような構成で 記事/本 を作成します。
+
+``` console:フォルダ構成
+|--zmce.config.yaml
+|--articles
+|  |--normal_article.md
+|  |--skip_article.md
+|--books
+|  |--skip_book
+|  |  |--skip_book_chapter.md
+|  |--normal_book
+|  |  |--normal_chapter.md
+|  |  |--skip_chapter.md
+|--submodules
+|  |--sample
+|  |  |--helloWorld.js
+```
+
+````` yaml:zmce.config.yaml:zmce/test/description_case/config_skip/received/zmce.config.yaml
+articles:
+    skip_article:
+        skip: true
+books:
+    skip_book:
+        skip: true
+    normal_book:
+        chapters:
+            skip_chapter:
+                skip: true
+
+`````
+
+````` md:normal_article.md(コマンド実行前):zmce/test/description_case/config_skip/received/articles/normal_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# SAMPLE
+
+``` js:helloWorld.js:sample/helloWorld.js
+```
+
+`````
+
+````` md:skip_article.md(コマンド実行前):zmce/test/description_case/config_skip/received/articles/skip_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# SAMPLE
+
+``` js:helloWorld.js:sample/helloWorld.js
+```
+
+`````
+
+````` md:skip_book_chapter.md(コマンド実行前):zmce/test/description_case/config_skip/received/books/skip_book/skip_book_chapter.md
+---
+title: ""
+---
+
+# SAMPLE
+
+``` js:helloWorld.js:sample/helloWorld.js
+```
+
+`````
+
+````` md:normal_chapter.md(コマンド実行前):zmce/test/description_case/config_skip/received/books/normal_book/normal_chapter.md
+---
+title: ""
+---
+
+# SAMPLE
+
+``` js:helloWorld.js:sample/helloWorld.js
+```
+
+`````
+
+````` md:skip_chapter.md(コマンド実行前):zmce/test/description_case/config_skip/received/books/normal_book/skip_chapter.md
+---
+title: ""
+---
+
+# SAMPLE
+
+``` js:helloWorld.js:sample/helloWorld.js
+```
+
+`````
+
+````` js:helloWorld.js:zmce/test/description_case/config_skip/received/submodules/sample/helloWorld.js
+console.log('Hello World!!');
+`````
+
+コマンドを実行すると、 マークダウンファイルが更新されます。
+
+``` shell:コマンド実行
+$ npx zmce
+[zmce] 処理を開始します。
+[articles/normal_article.md] コードブロックを修正しました。
+[books/normal_book/normal_chapter.md] コードブロックを修正しました。
+[zmce] 処理を終了します。(変更有 2, 変更無 0, エラー有 0, 対象無 0, スキップ 3)
+```
+
+````` md:normal_article.md(コマンド実行後):zmce/test/description_case/config_skip/expected/articles/normal_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# SAMPLE
+
+``` js:helloWorld.js:sample/helloWorld.js
+console.log('Hello World!!');
+```
+
+`````
+
+````` md:skip_article.md(コマンド実行後):zmce/test/description_case/config_skip/expected/articles/skip_article.md
+---
+title: ""
+emoji: "🙆"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: []
+published: false
+---
+
+# SAMPLE
+
+``` js:helloWorld.js:sample/helloWorld.js
+```
+
+`````
+
+````` md:skip_book_chapter.md(コマンド実行後):zmce/test/description_case/config_skip/expected/books/skip_book/skip_book_chapter.md
+---
+title: ""
+---
+
+# SAMPLE
+
+``` js:helloWorld.js:sample/helloWorld.js
+```
+
+`````
+
+````` md:normal_chapter.md(コマンド実行後):zmce/test/description_case/config_skip/expected/books/normal_book/normal_chapter.md
+---
+title: ""
+---
+
+# SAMPLE
+
+``` js:helloWorld.js:sample/helloWorld.js
+console.log('Hello World!!');
+```
+
+`````
+
+````` md:skip_chapter.md(コマンド実行後):zmce/test/description_case/config_skip/expected/books/normal_book/skip_chapter.md
+---
+title: ""
+---
+
+# SAMPLE
+
+``` js:helloWorld.js:sample/helloWorld.js
+```
+
+`````
+:::
+
+
+---
+
 # zmceのソースコード
 
 :::details zmceのソースコードを見る
@@ -1012,14 +1219,17 @@ const booksDirectoryName = "books";
 const configFileNameWithoutExtension = "zmce.config";
 const defaultRelativeRoot = "submodules";
 const defaultFenceStr = "```";
+const defaultSkip = false;
 
 type Config = {
   defaultFileConfig: FileConfig;
   articles: { [key: string]: FileConfig };
   books: { [key: string]: FileConfig };
+  chapters: { [key: string]: FileConfig };
 };
 
 type FileConfig = {
+  skip: boolean;
   relativeRoot: string;
   fenceStr: FenceStr;
 };
@@ -1029,6 +1239,14 @@ type FenceStr = string;
 function isFenceStr(arg: unknown): arg is FenceStr {
   return typeof arg === "string" && /^(````*|~~~~*)$/.test(arg);
 }
+
+type ResultCount = {
+  change: number;
+  noChange: number;
+  noTarget: number;
+  warn: number;
+  skip: number;
+};
 
 export function main() {
   consoleInfoSimple(`[zmce] 処理を開始します。`);
@@ -1041,9 +1259,18 @@ export function main() {
       `[zmce] エラーが発生したため、置換処理を行わずに終了します。`
     );
   } else {
-    articleFilesCodeEmbed(cwd, articleFiles, config);
-    chapterFilesCodeEmbed(cwd, chapterFiles, config);
-    consoleInfoSimple(`[zmce] 処理を終了します。`);
+    const rusultCount = {
+      change: 0,
+      noChange: 0,
+      noTarget: 0,
+      warn: 0,
+      skip: 0,
+    };
+    articleFilesCodeEmbed(cwd, articleFiles, config, rusultCount);
+    chapterFilesCodeEmbed(cwd, chapterFiles, config, rusultCount);
+    consoleInfoSimple(
+      `[zmce] 処理を終了します。(変更有 ${rusultCount.change}, 変更無 ${rusultCount.noChange}, エラー有 ${rusultCount.warn}, 対象無 ${rusultCount.noTarget}, スキップ ${rusultCount.skip})`
+    );
   }
 }
 
@@ -1065,8 +1292,10 @@ function buildConfig(arg: string | null, configFileName: string): Config {
   let fileConfig: any;
   let relativeRoot = defaultRelativeRoot;
   let fenceStr = defaultFenceStr;
+  let skip = defaultSkip;
   const articles: { [key: string]: FileConfig } = {};
   const books: { [key: string]: FileConfig } = {};
+  const chapters: { [key: string]: FileConfig } = {};
   if (arg) {
     try {
       fileConfig = yaml.safeLoad(arg);
@@ -1091,18 +1320,28 @@ function buildConfig(arg: string | null, configFileName: string): Config {
         fenceStr = fileConfig.fenceStr;
       } else {
         consoleError(
-          `[${configFileName}] 設定ファイルのfenceStrプロパティには「*」もしくは「~」の連続した3文字以上の文字列を指定してください。`
+          `[${configFileName}] 設定ファイルのfenceStrプロパティには「\`」もしくは「~」の連続した3文字以上の文字列を指定してください。`
+        );
+      }
+    }
+    if ("skip" in fileConfig) {
+      if (typeof fileConfig.skip === "boolean") {
+        skip = fileConfig.skip;
+      } else {
+        consoleError(
+          `[${configFileName}] 設定ファイルのskipプロパティにはtrue/falseを指定してください。`
         );
       }
     }
     if ("articles" in fileConfig) {
       if (isHash(fileConfig.articles)) {
-        for (let key in fileConfig.articles) {
-          articles[key] = buildFileConfig(
-            fileConfig.articles[key],
+        for (let article in fileConfig.articles) {
+          articles[article] = buildFileConfig(
+            fileConfig.articles[article],
             relativeRoot,
             fenceStr,
-            `articles.${key}`,
+            skip,
+            `articles.${article}`,
             configFileName
           );
         }
@@ -1114,14 +1353,35 @@ function buildConfig(arg: string | null, configFileName: string): Config {
     }
     if ("books" in fileConfig) {
       if (isHash(fileConfig.books)) {
-        for (let key in fileConfig.books) {
-          books[key] = buildFileConfig(
-            fileConfig.books[key],
+        for (let book in fileConfig.books) {
+          books[book] = buildFileConfig(
+            fileConfig.books[book],
             relativeRoot,
             fenceStr,
-            `books.${key}`,
+            skip,
+            `books.${book}`,
             configFileName
           );
+          if (isHash(fileConfig.books[book])) {
+            if ("chapters" in fileConfig.books[book]) {
+              if (isHash(fileConfig.books[book].chapters)) {
+                for (let chapter in fileConfig.books[book].chapters) {
+                  chapters[`${book}/${chapter}`] = buildFileConfig(
+                    fileConfig.books[book].chapters[chapter],
+                    books[book].relativeRoot,
+                    books[book].fenceStr,
+                    books[book].skip,
+                    `books.${book}.chapters.${chapter}`,
+                    configFileName
+                  );
+                }
+              } else {
+                consoleError(
+                  `[${configFileName}] 設定ファイルのbooks.${book}.chaptersプロパティは連想配列(ハッシュ)で記載してください。`
+                );
+              }
+            }
+          }
         }
       } else {
         consoleError(
@@ -1136,9 +1396,11 @@ function buildConfig(arg: string | null, configFileName: string): Config {
     defaultFileConfig: {
       relativeRoot: relativeRoot,
       fenceStr: fenceStr,
+      skip: skip,
     },
     articles: articles,
     books: books,
+    chapters: chapters,
   };
 }
 
@@ -1146,6 +1408,7 @@ function buildFileConfig(
   arg: any,
   relativeRoot: string,
   fenceStr: FenceStr,
+  skip: boolean,
   propertyName: string,
   configFileName: string
 ): FileConfig {
@@ -1164,7 +1427,16 @@ function buildFileConfig(
         fenceStr = arg.fenceStr;
       } else {
         consoleError(
-          `[${configFileName}] 設定ファイルの${propertyName}.fenceStrプロパティには「*」もしくは「~」の連続した3文字以上の文字列を指定してください。`
+          `[${configFileName}] 設定ファイルの${propertyName}.fenceStrプロパティには「\`」もしくは「~」の連続した3文字以上の文字列を指定してください。`
+        );
+      }
+    }
+    if ("skip" in arg) {
+      if (typeof arg.skip === "boolean") {
+        skip = arg.skip;
+      } else {
+        consoleError(
+          `[${configFileName}] 設定ファイルの${propertyName}.skipプロパティにはtrue/falseを指定してください。`
         );
       }
     }
@@ -1176,6 +1448,7 @@ function buildFileConfig(
   return {
     relativeRoot: relativeRoot,
     fenceStr: fenceStr,
+    skip: skip,
   };
 }
 
@@ -1238,14 +1511,16 @@ function getChapterFiles(basePath: string) {
 function articleFilesCodeEmbed(
   basePath: string,
   articleFiles: string[],
-  config: Config
+  config: Config,
+  resultCount: ResultCount
 ): void {
   articleFiles.forEach((f) => {
     let fileKey = basename(f, ".md");
     codeEmbed(
       basePath,
       f,
-      config.articles[fileKey] || config.defaultFileConfig
+      config.articles[fileKey] || config.defaultFileConfig,
+      resultCount
     );
   });
 }
@@ -1253,19 +1528,35 @@ function articleFilesCodeEmbed(
 function chapterFilesCodeEmbed(
   basePath: string,
   chapterFiles: string[],
-  config: Config
+  config: Config,
+  resultCount: ResultCount
 ): void {
   chapterFiles.forEach((f) => {
-    let fileKey = basename(dirname(f));
-    codeEmbed(basePath, f, config.books[fileKey] || config.defaultFileConfig);
+    let bookKey = basename(dirname(f));
+    let chapterKey = `${bookKey}/${basename(f, ".md")}`;
+    codeEmbed(
+      basePath,
+      f,
+      config.chapters[chapterKey] ||
+        config.books[bookKey] ||
+        config.defaultFileConfig,
+      resultCount
+    );
   });
 }
 function codeEmbed(
   basePath: string,
   mdPath: string,
-  fileConfig: FileConfig
+  fileConfig: FileConfig,
+  resultCount: ResultCount
 ): void {
+  if (fileConfig.skip) {
+    resultCount.skip += 1;
+    return;
+  }
   let text;
+  let targetFlg = false;
+  let warnFlg = false;
   try {
     text = fs.readFileSync(join(basePath, mdPath), "utf8");
   } catch (e) {
@@ -1283,6 +1574,7 @@ function codeEmbed(
       code,
       afterMark
     ) => {
+      targetFlg = true;
       let afterCode;
       codePath = codePath.trim();
       const [codeAbsPath, codeRelativePath] = getCodeAbsRelativePath(
@@ -1292,30 +1584,38 @@ function codeEmbed(
         codePath
       );
       try {
-        afterCode = fs.readFileSync(
-          codeAbsPath,
-          "utf8"
-        );
+        afterCode = fs.readFileSync(codeAbsPath, "utf8");
       } catch (e) {
-        consoleWarn(
-          `[${mdPath}] 「${codeRelativePath}」ファイルがありません`
-        );
+        consoleWarn(`[${mdPath}] 「${codeRelativePath}」ファイルがありません`);
+        warnFlg = true;
         return match;
       }
       if (getCheckPattern(fileConfig.fenceStr).test(afterCode)) {
         consoleWarn(
-          `[${mdPath}] 「${codeRelativePath}」ファイル内に使用できないパターン(^${
-            fileConfig.fenceStr
-          })が含まれています。`
+          `[${mdPath}] 「${codeRelativePath}」ファイル内に使用できないパターン(^${fileConfig.fenceStr})が含まれています。`
         );
+        warnFlg = true;
         return match;
       }
       return `${beginMark}${codeType}:${codeName}:${codePath}${other}\n${afterCode}\n${afterMark}`;
     }
   );
-  if (afterText != text) {
+  if (!targetFlg) {
+    resultCount.noTarget += 1;
+  } else if (afterText != text) {
     fs.writeFileSync(join(basePath, mdPath), afterText, "utf8");
     consoleInfo(`[${mdPath}] コードブロックを修正しました。`);
+    if (warnFlg) {
+      resultCount.warn += 1;
+    } else {
+      resultCount.change += 1;
+    }
+  } else {
+    if (warnFlg) {
+      resultCount.warn += 1;
+    } else {
+      resultCount.noChange += 1;
+    }
   }
 }
 
@@ -1336,13 +1636,16 @@ function getCodeAbsRelativePath(
   mdPath: string,
   codePath: string
 ): [string, string] {
-  if (codePath.startsWith('/')) {
+  if (codePath.startsWith("/")) {
     return [codePath, codePath];
-  } else if(/^(\.\/|\.\.\/)/.test(codePath)) {
-    let mdDir = dirname(mdPath)
+  } else if (/^(\.\/|\.\.\/)/.test(codePath)) {
+    let mdDir = dirname(mdPath);
     return [join(basePath, mdDir, codePath), join(mdDir, codePath)];
   } else {
-    return [join(basePath, relativeRoot, codePath), join(relativeRoot, codePath)];
+    return [
+      join(basePath, relativeRoot, codePath),
+      join(relativeRoot, codePath),
+    ];
   }
 }
 
@@ -1375,11 +1678,10 @@ function consoleInfoSimple(msg: string): void {
  しかし、Zennのリリース当時はHTMLコメントが使えなかったことと、コードブロックにファイル名を指定するIssuesが既に上がっていたことから、今回のコードブロックのコード名称を拡張する形式にしました。~~先にHTMLのコメント記法に対応が入るとは思わなかった😅~~  
  作成してみて、今の形式もシンプルでわかり易いと考え公開に踏み切りました。
   - 今後、以下のような拡張ができたらいいかと考えています。下記以外でもフィードバックを頂けると励みになります！
-    - zmce.config.yamlの設定追加(スキップ対象の設定など)
+    - コマンドの実行結果の埋め込み等への対応
     - HTMLコメント記法を使用した、より制御の細かいマクロ置換記法の作成
     - 初期化コマンド(npx zmce init)対応
     - 特定の行やメソッドのみを参照させるような指定方法の追加
-    - コマンドの実行結果の埋め込み等への対応
     - コマンド追加(zmce clearなど。ブランチ別でコードを埋め込まない状態で管理するなど)
  - Zennにより、ローカル執筆環境のディレクトリ構成にarticlesやbooksなど、いい意味でConventionが設けられたため、このようなツールが作成しやすい環境ができたと思っています。zmceの思想や使用しているツールは今後、記事を書けたらいいな、と思ってます。
  - 私は心の中で「ジムチェ」と唱えながらコマンドをたたいています。

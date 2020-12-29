@@ -19,7 +19,7 @@
   "description": "[✍️ How to use](https://zenn.dev/zenn/articles/zenn-cli-guide)",
   "dependencies": {
     "zenn-cli": "^0.1.59",
-    "zmce": "^0.1.0"
+    "zmce": "^0.2.0"
   },
   "devDependencies": {
     "textlint": "^11.7.6",
