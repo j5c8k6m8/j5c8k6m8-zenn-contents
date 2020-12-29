@@ -1,3 +1,8 @@
 articles:
   zmce-introduction:
     fenceStr: '`````'
+books:
+  dead-code-cookbook:
+    chapters:
+      r_template:
+        skip: true
