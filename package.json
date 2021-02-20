@@ -18,7 +18,7 @@
   "homepage": "https://github.com/j5c8k6m8/j5c8k6m8-zenn-contents#readme",
   "description": "[✍️ How to use](https://zenn.dev/zenn/articles/zenn-cli-guide)",
   "dependencies": {
-    "zenn-cli": "^0.1.59",
+    "zenn-cli": "^0.1.73",
     "zmce": "^0.2.0"
   },
   "devDependencies": {

@@ -1,3 +1,3 @@
 (() => {
-    console.log("Am I dead?")
-})()
+  console.log("Am I dead?");
+})();

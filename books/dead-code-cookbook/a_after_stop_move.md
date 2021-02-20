@@ -6,7 +6,7 @@ title: "👼ネスト修正による中断コードの移動"
 
 構文木において、 `return` などの中断を伴う処理が、前要素ではなくなるように、インデントや中括弧を追加することで、後続の処理を復活させる。 
 
-``` diff:after_return_with_if.py:./projects/python/diff/angel/after_stop_move.diff
+``` diff python:after_return_with_if.py:exec diff -U 100 books/dead-code-cookbook/projects/python/src/angel/before/after_stop_move.py books/dead-code-cookbook/projects/python/src/angel/after/after_stop_move.py | tail -n +4
  import sys
  
  
@@ -36,7 +36,7 @@ title: "👼ネスト修正による中断コードの移動"
 
 ## 🔧Python
 
-``` diff:after_return_with_if.py:./projects/python/diff/angel/after_stop_move.diff
+``` diff python:after_return_with_if.py:exec diff -U 100 books/dead-code-cookbook/projects/python/src/angel/before/after_stop_move.py books/dead-code-cookbook/projects/python/src/angel/after/after_stop_move.py | tail -n +4
  import sys
  
  
@@ -55,7 +55,7 @@ title: "👼ネスト修正による中断コードの移動"
 
 ## 🔧Ruby
 
-``` diff:after_return_with_if.rb:./projects/ruby/diff/angel/after_stop_move.diff
+``` diff ruby:after_return_with_if.rb:exec diff -U 100 books/dead-code-cookbook/projects/ruby/src/angel/before/after_stop_move.rb books/dead-code-cookbook/projects/ruby/src/angel/after/after_stop_move.rb | tail -n +4
  if ARGV.size.positive?
    puts('Cannot enter arguments.')
 +  return
@@ -68,7 +68,7 @@ title: "👼ネスト修正による中断コードの移動"
 
 ## 🔧JavaScript
 
-``` diff:after_return_with_if.js:./projects/javascript/diff/angel/after_stop_move.diff
+``` diff js:after_return_with_if.js:exec diff -U 100 books/dead-code-cookbook/projects/javascript/src/angel/before/after_stop_move.js books/dead-code-cookbook/projects/javascript/src/angel/after/after_stop_move.js | tail -n +4
  (() => {
      if (process.argv.length > 2) {
          console.log("Cannot enter arguments.");
@@ -77,12 +77,14 @@ title: "👼ネスト修正による中断コードの移動"
 -    return
      console.log("Am I dead?");
  })()
+\ No newline at end of file
+
 ```
 
 
 ## 🔧Java
 
-``` diff:AfterReturnWithIf.java:./projects/java/diff/angel/after_stop_move.diff
+``` diff java:AfterReturnWithIf.java:exec diff -U 100 books/dead-code-cookbook/projects/java/src/main/java/angel/before/after_stop_move/AfterReturnWithIf.java books/dead-code-cookbook/projects/java/src/main/java/angel/after/after_stop_move/AfterReturnWithIf.java | tail -n +4
  public class AfterReturnWithIf {
      public static void main(String[] args) {
          if (args.length > 0) {
@@ -93,12 +95,14 @@ title: "👼ネスト修正による中断コードの移動"
          System.out.println("Am I dead?");
      }
  }
+\ No newline at end of file
+
 ```
 
 
 ## 🔧Go
 
-``` diff:after_return_with_if.go:./projects/golang/diff/angel/after_stop_move.diff
+``` diff go:after_return_with_if.go:exec diff -U 100 books/dead-code-cookbook/projects/golang/src/angel/before/after_stop_move.go books/dead-code-cookbook/projects/golang/src/angel/after/after_stop_move.go | tail -n +4
  package main
  
  import (
