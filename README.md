@@ -15,7 +15,7 @@
  - Zennのルートディレクトリのパスに対して、環境変数(ZENN_HOME)が設定されていること  
  (本README.md内のコマンドでのみ使用)
 
-``` shell
+``` shell-session
 $ docker build -t zenn-contents .
 $ docker run --name zenn --rm -v $ZENN_HOME:/app/zenn-contents -w /app/zenn-contents -it zenn-contents ash
 /app/zenn-contents # npm init --yes
