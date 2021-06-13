@@ -34,7 +34,7 @@ docker run --name zenn --rm -d -v $ZENN_HOME:/app/zenn-contents -w /app/zenn-con
 ## コマンド実行
 
 ``` shell
-docker exec -it zenn ash
+docker exec -it zenn bash
 # Linuxで開発ユーザとコンテナのユーザを合わせる場合
 # docker exec -it -u $(id -u $USER):$(id -g $USER) zenn ash 
 ``` 

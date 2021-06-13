@@ -1,3 +1,9 @@
 [submodule "submodules/zmce"]
 	path = submodules/zmce
 	url = https://github.com/j5c8k6m8/zmce.git
+[submodule "spex-m8p-py"]
+	path = spex-m8p-py
+	url = https://github.com/j5c8k6m8/spex-m8p-py.git
+[submodule "submodules/spex-m8p-py"]
+	path = submodules/spex-m8p-py
+	url = https://github.com/j5c8k6m8/spex-m8p-py.git
