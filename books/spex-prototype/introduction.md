@@ -45,9 +45,14 @@ title: "はじめに"
 
 # 完成品
 
-本書で作成する正規表現エンジンは、Pythonパッケージ `spexm8p` としてPyPIに登録済みです。使用するだけであれば、以下のように `from spexm8p.builder import spex` を記述してimportすることで、 正規表現を利用した文字列集合クラス `Spex` を利用することが可能です。
+本書で作成する正規表現エンジンは、Pythonパッケージ `spexm8p` としてPyPIに登録済みです。使用するだけであれば、以下のように `pip install spexm8p` 後、 `from spexm8p.builder import spex` を記述してimportすることで、 正規表現を利用した文字列集合クラス `Spex` を利用することが可能です。
 
 ``` console:sample
+# pip install spexm8p
+Collecting spexm8p
+  Downloading spexm8p-0.0.4-py3-none-any.whl (8.2 kB)
+Installing collected packages: spexm8p
+Successfully installed spexm8p-0.0.4
 # python3
 Python 3.9.2 (default, Mar  4 2021, 15:30:45)
 [GCC 8.3.0] on linux
