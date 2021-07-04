@@ -15,39 +15,21 @@
  - Zennのルートディレクトリのパスに対して、環境変数(ZENN_HOME)が設定されていること  
  (本README.md内のコマンドでのみ使用)
 
+
 ``` shell-session
 $ docker build -t zenn-contents .
-$ docker run --name zenn --rm -v $ZENN_HOME:/app/zenn-contents -w /app/zenn-contents -it zenn-contents ash
-/app/zenn-contents # npm init --yes
-/app/zenn-contents # npm install zenn-cli
-/app/zenn-contents # npx zenn init
+$ docker run --name zenn --rm -v $ZENN_HOME:/app/zenn-contents -w /app/zenn-contents -it zenn-contents bash
+/app/zenn-contents # npm install
 ``` 
 
 ## 起動
 
 ``` shell
 docker run --name zenn --rm -d -v $ZENN_HOME:/app/zenn-contents -w /app/zenn-contents -p 80:8000 zenn-contents
-# Linuxで開発ユーザとコンテナのユーザを合わせる場合
-# docker run --name zenn --rm -d -v $ZENN_HOME:/app/zenn-contents -w /app/zenn-contents -p 80:8000 -u $(id -u $USER):$(id -g $USER) zenn-contents
 ```
 
-## コマンド実行
+## ログイン(コマンド実行)
 
 ``` shell
 docker exec -it zenn bash
-# Linuxで開発ユーザとコンテナのユーザを合わせる場合
-# docker exec -it -u $(id -u $USER):$(id -g $USER) zenn ash 
 ``` 
-
-# zmceコンテナ実行(zmce開発用)
-
-``` shell
-docker run --name zmce --rm -v $ZENN_HOME/submodules/zmce:/app/zmce -w /app/zmce -u $(id -u $USER):$(id -g $USER) -it node bash
-```
-
-# DEAD CODE COOKBOOK用メモ
-
-``` shell
-git subtree push --prefix=books/dead-code-cookbook dcc main
-git subtree pull --prefix=books/dead-code-cookbook dcc main
-```

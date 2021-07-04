@@ -4,7 +4,7 @@ FROM buildpack-deps:buster
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
-ENV NODE_VERSION 15.10.0
+ENV NODE_VERSION 16.3.0
 
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
@@ -31,6 +31,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     108F52B48DB57BB0CC439B2997B01419BD92F80A \
     B9E2F5981AA6E0CD28160D9FF13993A75599653C \
   ; do \
+    gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" || \
     gpg --batch --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys "$key" || \
     gpg --batch --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys "$key" || \
     gpg --batch --keyserver hkp://pgp.mit.edu:80 --recv-keys "$key" ; \
@@ -52,6 +53,7 @@ RUN set -ex \
   && for key in \
     6A010C5166006599AA17F08146C2130DFD2497F5 \
   ; do \
+    gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" || \
     gpg --batch --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys "$key" || \
     gpg --batch --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys "$key" || \
     gpg --batch --keyserver hkp://pgp.mit.edu:80 --recv-keys "$key" ; \
@@ -67,8 +69,8 @@ RUN set -ex \
   # smoke test
   && yarn --version
 
-COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
+# COPY docker-entrypoint.sh /usr/local/bin/
+# ENTRYPOINT ["docker-entrypoint.sh"]
 
 # CMD [ "node" ]
 
@@ -168,7 +170,7 @@ RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"
 #
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
-
+#
 # FROM buildpack-deps:buster
 
 # ensure local python is preferred over distribution python
@@ -186,14 +188,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV GPG_KEY E3FF2839C048B25C084DEBE9B26995E310250568
-ENV PYTHON_VERSION 3.9.2
+ENV PYTHON_VERSION 3.9.6
 
 RUN set -ex \
 	\
 	&& wget -O python.tar.xz "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz" \
 	&& wget -O python.tar.xz.asc "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz.asc" \
 	&& export GNUPGHOME="$(mktemp -d)" \
-	&& gpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPG_KEY" \
+	&& gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$GPG_KEY" \
 	&& gpg --batch --verify python.tar.xz.asc python.tar.xz \
 	&& { command -v gpgconf > /dev/null && gpgconf --kill all || :; } \
 	&& rm -rf "$GNUPGHOME" python.tar.xz.asc \
@@ -234,10 +236,10 @@ RUN cd /usr/local/bin \
 	&& ln -s python3-config python-config
 
 # if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
-ENV PYTHON_PIP_VERSION 21.0.1
+ENV PYTHON_PIP_VERSION 21.1.3
 # https://github.com/pypa/get-pip
-ENV PYTHON_GET_PIP_URL https://github.com/pypa/get-pip/raw/b60e2320d9e8d02348525bd74e871e466afdf77c/get-pip.py
-ENV PYTHON_GET_PIP_SHA256 c3b81e5d06371e135fb3156dc7d8fd6270735088428c4a9a5ec1f342e2024565
+ENV PYTHON_GET_PIP_URL https://github.com/pypa/get-pip/raw/a1675ab6c2bd898ed82b1f58c486097f763c74a9/public/get-pip.py
+ENV PYTHON_GET_PIP_SHA256 6665659241292b2147b58922b9ffe11dda66b39d52d8a6f3aa310bc1d60ea6f7
 
 RUN set -ex; \
 	\
@@ -261,8 +263,106 @@ RUN set -ex; \
 
 # CMD ["python3"]
 
-RUN pip install flake8==3.8.4
+RUN pip install flake8==3.9.2
 RUN pip install pyyaml==5.4.1
+
+# ref https://github.com/docker-library/openjdk/blob/81167e44bda63a857bfc5f89cf47c9e23dcf176b/18/jdk/buster/Dockerfile
+#
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "apply-templates.sh"
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
+#
+# FROM buildpack-deps:buster-scm
+
+RUN set -eux; \
+	apt-get update; \
+	apt-get install -y --no-install-recommends \
+		bzip2 \
+		unzip \
+		xz-utils \
+		\
+# jlink --strip-debug on 13+ needs objcopy: https://github.com/docker-library/openjdk/issues/351
+# Error: java.io.IOException: Cannot run program "objcopy": error=2, No such file or directory
+		binutils \
+		\
+# java.lang.UnsatisfiedLinkError: /usr/local/openjdk-11/lib/libfontmanager.so: libfreetype.so.6: cannot open shared object file: No such file or directory
+# java.lang.NoClassDefFoundError: Could not initialize class sun.awt.X11FontManager
+# https://github.com/docker-library/openjdk/pull/235#issuecomment-424466077
+		fontconfig libfreetype6 \
+		\
+# utilities for keeping Debian and OpenJDK CA certificates in sync
+		ca-certificates p11-kit \
+	; \
+	rm -rf /var/lib/apt/lists/*
+
+ENV JAVA_HOME /usr/local/openjdk-18
+ENV PATH $JAVA_HOME/bin:$PATH
+
+# Default to UTF-8 file.encoding
+ENV LANG C.UTF-8
+
+# https://jdk.java.net/
+# >
+# > Java Development Kit builds, from Oracle
+# >
+ENV JAVA_VERSION 18-ea+4
+
+RUN set -eux; \
+	\
+	arch="$(dpkg --print-architecture)"; \
+	case "$arch" in \
+		'amd64') \
+			downloadUrl='https://download.java.net/java/early_access/jdk18/4/GPL/openjdk-18-ea+4_linux-x64_bin.tar.gz'; \
+			downloadSha256='716cfd996b255bbad0b3d17027e5637bf2cf30bf320339116c661d63e797a324'; \
+			;; \
+		'arm64') \
+			downloadUrl='https://download.java.net/java/early_access/jdk18/4/GPL/openjdk-18-ea+4_linux-aarch64_bin.tar.gz'; \
+			downloadSha256='d2c4885f81f8be83225ef11849eaaa35af6af01337b90435d9abb8b4138d2795'; \
+			;; \
+		*) echo >&2 "error: unsupported architecture: '$arch'"; exit 1 ;; \
+	esac; \
+	\
+	wget --progress=dot:giga -O openjdk.tgz "$downloadUrl"; \
+	echo "$downloadSha256 *openjdk.tgz" | sha256sum --strict --check -; \
+	\
+	mkdir -p "$JAVA_HOME"; \
+	tar --extract \
+		--file openjdk.tgz \
+		--directory "$JAVA_HOME" \
+		--strip-components 1 \
+		--no-same-owner \
+	; \
+	rm openjdk.tgz*; \
+	\
+# update "cacerts" bundle to use Debian's CA certificates (and make sure it stays up-to-date with changes to Debian's store)
+# see https://github.com/docker-library/openjdk/issues/327
+#     http://rabexc.org/posts/certificates-not-working-java#comment-4099504075
+#     https://salsa.debian.org/java-team/ca-certificates-java/blob/3e51a84e9104823319abeb31f880580e46f45a98/debian/jks-keystore.hook.in
+#     https://git.alpinelinux.org/aports/tree/community/java-cacerts/APKBUILD?id=761af65f38b4570093461e6546dcf6b179d2b624#n29
+	{ \
+		echo '#!/usr/bin/env bash'; \
+		echo 'set -Eeuo pipefail'; \
+		echo 'trust extract --overwrite --format=java-cacerts --filter=ca-anchors --purpose=server-auth "$JAVA_HOME/lib/security/cacerts"'; \
+	} > /etc/ca-certificates/update.d/docker-openjdk; \
+	chmod +x /etc/ca-certificates/update.d/docker-openjdk; \
+	/etc/ca-certificates/update.d/docker-openjdk; \
+	\
+# https://github.com/docker-library/openjdk/issues/331#issuecomment-498834472
+	find "$JAVA_HOME/lib" -name '*.so' -exec dirname '{}' ';' | sort -u > /etc/ld.so.conf.d/docker-openjdk.conf; \
+	ldconfig; \
+	\
+# https://github.com/docker-library/openjdk/issues/212#issuecomment-420979840
+# https://openjdk.java.net/jeps/341
+	java -Xshare:dump; \
+	\
+# basic smoke test
+	fileEncoding="$(echo 'System.out.println(System.getProperty("file.encoding"))' | jshell -s -)"; [ "$fileEncoding" = 'UTF-8' ]; rm -rf ~/.java; \
+	javac --version; \
+	java --version
+
+# "jshell" is an interactive REPL for Java (see https://en.wikipedia.org/wiki/JShell)
+# CMD ["jshell"]
 
 WORKDIR /app
 
