@@ -203,19 +203,11 @@ class Spex:
         for sid in self._tns_dict:
             if sid == 0:
                 ret += "    0(( ))\n"
-            elif sid == -1:
-                ret += "    -1(( ))\n"
-            elif sid == -2:
-                ret += "    -2(( ))\n"
             else:
                 ret += f"    {sid}( )\n"
         for sid in self._tns_dict:
             if sid == 0:
                 ret += "    style 0 fill:#000,stroke-width:0px\n"
-            elif sid == -1:
-                ret += "    style -1 fill:#adb5bd,stroke-width:0px\n"
-            elif sid == -2:
-                ret += "    style -2 fill:#adb5bd,stroke:#dc3545,stroke-width:4px\n"
             elif sid in self._accepts_sids:
                 ret += f"    style {sid} stroke:#dc3545,stroke-width:4px\n"
         for tns in self._tns_dict.values():

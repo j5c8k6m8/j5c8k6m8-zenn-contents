@@ -33,3 +33,9 @@ docker run --name zenn --rm -d -v $ZENN_HOME:/app/zenn-contents -w /app/zenn-con
 ``` shell
 docker exec -it zenn bash
 ``` 
+
+## コード反映
+
+``` shell
+docker exec -it zenn ./submodules/zmce/bin/zmce
+```
