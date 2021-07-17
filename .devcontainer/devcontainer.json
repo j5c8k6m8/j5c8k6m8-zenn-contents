@@ -1,0 +1,10 @@
+{
+    "name": "zenn-contents",
+    "dockerComposeFile": [
+        "../docker-compose.yml"
+    ],
+    "service": "zenn",
+    "extensions": [
+    ],
+    "workspaceFolder": "/app/zenn-contents"
+}

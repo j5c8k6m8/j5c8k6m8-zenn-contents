@@ -1,0 +1,11 @@
+version: "3"
+services:
+  zenn:
+    container_name: zenn
+    build: .
+    tty: true
+    ports:
+      - 80:8000
+    volumes:
+      - .:/app/zenn-contents
+    working_dir: /app/zenn-contents

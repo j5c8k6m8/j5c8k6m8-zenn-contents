@@ -7,3 +7,6 @@
 [submodule "submodules/spex-m8p-py"]
 	path = submodules/spex-m8p-py
 	url = https://github.com/j5c8k6m8/spex-m8p-py.git
+[submodule "submodules/spex-m8q-py"]
+	path = submodules/spex-m8q-py
+	url = https://github.com/j5c8k6m8/spex-m8q-py
